@@ -1,2 +1,2 @@
-# FlexOffice-Assistant
+# Afterwork Organizer
 Projet étudiant - SOPRA STERIA
