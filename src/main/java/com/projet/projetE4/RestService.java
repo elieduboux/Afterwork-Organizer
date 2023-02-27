@@ -1,29 +1,65 @@
 package com.projet.projetE4;
 
+import org.hibernate.query.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
-@Transactional
 public class RestService {
-
-	private ActivityRepository activityRepository;
 	
-	public RestService(ActivityRepository activityRepository) {
-		this.activityRepository = activityRepository;
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	public boolean saveActivity(ActivityEntity activity) {
+		boolean status = false;
+		try {
+			sessionFactory.getCurrentSession().save(activity);
+			status = true;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return status;
 	}
 	
-	public String getActivityStats(Long id) {
-		ActivityEntity activity = activityRepository.findById(id);
-		String result="{ID : " + activity.getId().toString()+",Type Activite: " + activity.getType() + ",Nom activite : " + activity.getName()
-			+ ",Organisateur : " + activity.getOrganisator() + ",Collaborateur : " + activity.getCollaborator();
+	public List<ActivityEntity> getActivities() {
+		Session currentSession = sessionFactory.getCurrentSession();  
+		 Query<ActivityEntity> query= currentSession.createQuery("from activities", ActivityEntity.class);  
+		 List<ActivityEntity> list = query.getResultList();
+		 return list;
+	}
+	
+	public boolean deleteActivity(ActivityEntity activity) {
+		boolean status = false;
+		try {
+			sessionFactory.getCurrentSession().delete(activity);
+			status = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
+	
+	public List<ActivityEntity> findById(ActivityEntity activity) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<ActivityEntity> query = currentSession.createQuery("from activities where activity_id=:activity_id", ActivityEntity.class); 
+		query.setParameter("activity_id", activity.getId());  
+		List<ActivityEntity> list = query.getResultList();
 		
-		return result;
+		return list;
+	}
+	
+	public boolean updateActivity(ActivityEntity activity) {
+		boolean status=false;  
+        try {  
+            sessionFactory.getCurrentSession().update(activity);  
+            status=true;  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }  
+        return status;  
 	}
 }
