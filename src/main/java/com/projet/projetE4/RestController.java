@@ -96,7 +96,7 @@ public class RestController {
 		}
 	}
 
-	@DeleteMapping("/tutorials")
+	@DeleteMapping("/activities")
 	public ResponseEntity<HttpStatus> deleteAllActivities() {
 		try {
 			activityRepository.deleteAll();
