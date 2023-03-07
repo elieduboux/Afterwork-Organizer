@@ -3,7 +3,10 @@ package com.projet.projetE4;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,11 +18,16 @@ import javax.persistence.Table;
 public class ActivityEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(name = "name")
 	private String name;
+	@Column(name = "type")
 	private String type;
+	@Column(name = "organisator")
 	private String organisator;
+	@Column(name = "collaborator")
 	private String collaborator;
 	
 	public ActivityEntity(Long id, String name, String type, String organisator, String collaborator) {
@@ -28,6 +36,10 @@ public class ActivityEntity {
 		this.type = type;
 		this.organisator = organisator;
 		this.collaborator = collaborator;
+	}
+	
+	public ActivityEntity() {
+		
 	}
 	
 	public Long getId() {
