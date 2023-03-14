@@ -53,8 +53,8 @@ public class CollaboratorService {
 
         if (email != null && email.length() > 0 &&
                 !Objects.equals(collaborator.getEmail(),email)){
-            Optional<Collaborator> studentOptional = collaboratorRepository.findCollaboratorByEmail(collaborator.getEmail());
-            if (studentOptional.isPresent()) {
+            Optional<Collaborator> collaboratorOptional = collaboratorRepository.findCollaboratorByEmail(collaborator.getEmail());
+            if (collaboratorOptional.isPresent()) {
                 throw new IllegalAccessException("email taken");
             }
             collaborator.setEmail(email);

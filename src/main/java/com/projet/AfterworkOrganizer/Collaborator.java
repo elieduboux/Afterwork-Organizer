@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.time.Period;
-
 @Entity
 @Table(name= "Collaborator")
 @Getter
@@ -14,37 +11,35 @@ import java.time.Period;
 public class Collaborator {
     @Id
     @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
+            name = "collaborator_sequence",
+            sequenceName = "collaborator_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
+            generator = "collaborator_sequence"
     )
     private Long id;
     private String name;
-    private  String email;
-    private LocalDate dateOfBirth;
-    @Transient
-    private Integer age;
+    private String email;
+    private String adresse;
 
     public Collaborator(Long id,
                    String name,
                    String email,
-                   LocalDate dateOfBirth) {
+                        String adresse) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.dateOfBirth = dateOfBirth;
+        this.adresse = adresse;
     }
     public Collaborator(
                         String name,
                         String email,
-                        LocalDate dateOfBirth) {
+                        String adresse) {
         this.name = name;
         this.email = email;
-        this.dateOfBirth = dateOfBirth;
+        this.adresse = adresse;
     }
 
     public Collaborator() {
@@ -62,12 +57,8 @@ public class Collaborator {
         return email;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public Integer getAge() {
-        return Period.between(this.dateOfBirth,LocalDate.now()).getYears();
+    public String getAdresse() {
+        return adresse;
     }
 
     public void setId(Long id) {
@@ -82,12 +73,8 @@ public class Collaborator {
         this.email = email;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     @Override
@@ -96,8 +83,7 @@ public class Collaborator {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", age=" + age +
+                ", adresse='" + adresse + '\'' +
                 '}';
     }
 }

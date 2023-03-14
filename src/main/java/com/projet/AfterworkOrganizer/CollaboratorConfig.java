@@ -18,13 +18,13 @@ public class CollaboratorConfig {
             Collaborator mariam = new Collaborator(
                     "Mariane",
                     "Marian@gmail.com",
-                    LocalDate.of(2000, Month.APRIL,5)
+                    "40 rue montgallet"
             );
 
             Collaborator alex = new Collaborator(
                     "Alex",
                     "Alex@gmail.com",
-                    LocalDate.of(2005, Month.JANUARY,3)
+                    "40 rue montgallet"
             );
             repository.saveAll(
                     List.of(mariam,alex)

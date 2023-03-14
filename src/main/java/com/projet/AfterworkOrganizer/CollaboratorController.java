@@ -16,7 +16,7 @@ public class CollaboratorController {
     }
 
     @GetMapping
-    public List<Collaborator> getStudents()
+    public List<Collaborator> getCollaborators()
     {
         return collaboratorService.getCollaborators();
     }
