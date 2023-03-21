@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { withRouter } from "react-router-dom";
 import JsonDataDisplay from './DataDisplayJson';
-import glasses from './glasses.png';
+import glasses from './glasses_50.png';
+import './Activity.css';
 
 class ActivityList extends Component {
   constructor(props) {
@@ -44,10 +45,11 @@ class ActivityList extends Component {
     }
     return (
       <><JsonDataDisplay />
-      <div>
-        <img src={glasses} alt="Glasses" />
+      <div className='glass'>
+        <img src={glasses} alt="Glasses" className='center'/>
       </div></>
     )
     }
 }
+
 export default withRouter(ActivityList);

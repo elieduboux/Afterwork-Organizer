@@ -3,7 +3,7 @@ import './App.css';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'reactstrap';
-import logo from './logo.png';
+import logo from './logo_50.png';
 
 class Home extends Component {
     render() {
