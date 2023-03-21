@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { withRouter } from "react-router-dom";
 import JsonDataDisplay from './DataDisplayJson';
+import glasses from './glasses.png';
 
 class ActivityList extends Component {
   constructor(props) {
@@ -28,21 +29,24 @@ class ActivityList extends Component {
     });
   }
   render() {
-    /*const styles = theme => ({
+    /* 
+    const styles = theme => ({
       tableCell: {
         '&:hover': {
           backgroundColor: "blue !important"
         }
       }
     });
-    */
-
+  */
     const {isLoading} = this.state;
     if (isLoading) {
       return <p>Loading...</p>
     }
     return (
-      <JsonDataDisplay/>
+      <><JsonDataDisplay />
+      <div>
+        <img src={glasses} alt="Glasses" />
+      </div></>
     )
     }
 }
