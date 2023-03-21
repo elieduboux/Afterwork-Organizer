@@ -1,9 +1,9 @@
 package com.projet.projetE4;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/activities")
 public class MyController {
 
+	@Autowired
     private final ActivityRepository activityRepository;
 
     public MyController(ActivityRepository activityRepository) {
@@ -33,18 +34,17 @@ public class MyController {
 
     @GetMapping("/{id}")
     public ActivityEntity getActivity(@PathVariable Long id) {
-        return activityRepository.findById(id).orElseThrow(RuntimeException::new);
+        return activityRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Activity not exist with id :" + id));
     }
 
     @PostMapping
-    public ResponseEntity<ActivityEntity> createActivity(@RequestBody ActivityEntity activity) throws URISyntaxException {
-    	ActivityEntity savedActivity = activityRepository.save(activity);
-        return ResponseEntity.created(new URI("/activities/" + savedActivity.getId())).body(savedActivity);
+    public ActivityEntity createActivity(@RequestBody ActivityEntity activity) throws URISyntaxException {
+    	return activityRepository.save(activity);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ActivityEntity> updateActivity(@PathVariable Long id, @RequestBody ActivityEntity activity) {
-    	ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(RuntimeException::new);
+    	ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Activity not exist with id :" + id));
     	currentActivity.setName(activity.getName());
     	currentActivity.setType(activity.getType());
     	currentActivity.setOrganisator(activity.getOrganisator());

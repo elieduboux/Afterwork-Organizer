@@ -1,8 +1,5 @@
 package com.projet.projetE4;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +10,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name= "activities")
-@Getter
-@Setter
 public class ActivityEntity {
 
 	@Id

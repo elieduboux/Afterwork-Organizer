@@ -1,0 +1,10 @@
+/*Conditions for when the add/edit activity form appears*/
+.add-enter {
+    width: 0;
+}
+
+/* Specify duration of transition before the activity edit component renders as normal*/
+.add-enter.add-enter-active {
+    width: 90%;
+    transition: width 0.4s ease-in;
+}

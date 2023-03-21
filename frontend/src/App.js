@@ -4,6 +4,7 @@ import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ActivityList from './ActivityList';
 import ActivityEdit from './ActivityEdit';
+import ActivitySubscribe from './ActivitySubscribe';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
             <Route path='/' exact={true} component={Home}/>
             <Route path='/activities' exact={true} component={ActivityList}/>
             <Route path='/activities/:id' component={ActivityEdit}/>
+            <Route path='/activities-subscribe/:id' component={ActivitySubscribe} />
           </Switch>
         </Router>
     )
