@@ -22,7 +22,7 @@ function JsonDataDisplay(){
             <Box>
               <Stack spacing={2} direction="row">
                 <Tooltip title="Edit Activity">
-                <IconButton variant="contained" size="sm" color="success" tag={Link} underline="hover" to={"/activities/" + activity.id}>
+                <IconButton variant="contained" size="sm" color="success" underline="hover" onClick={ window.open("/activities/" + activity.id)}>
                   <EditIcon /></IconButton>
                 </Tooltip>
                 
@@ -31,7 +31,7 @@ function JsonDataDisplay(){
                     <DeleteIcon /></IconButton> 
                 </Tooltip>
                  <Tooltip title="Subscribe to Activity">
-                 <IconButton variant="contained" size="small" color="info" tag={Link} underline="hover" to="/activities-subscribe/:id">
+                 <IconButton variant="contained" size="small" color="info" underline="hover" onClick={ window.open("/activities-subscribe/" + activity.id) }>
                   <SubscriptionsIcon /></IconButton>
                  </Tooltip>
                 
@@ -46,7 +46,7 @@ function JsonDataDisplay(){
         <AppNavbar />
             <Container fluid>
                 <div className="float-right">
-                    <Button color="success" variant="outlined" tag={Link} to="/activities/new">Add Activity<AddIcon /></Button>
+                    <Button color="success" variant="outlined" onClick={ () => window.open("/activities/new") }>Add Activity<AddIcon /></Button>
                 </div>
             <h3>Activities</h3>
             <Table className="mt-4">

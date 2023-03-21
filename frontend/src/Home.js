@@ -12,7 +12,7 @@ class Home extends Component {
                 <AppNavbar/>
                 <img src={logo} alt="Logo"/>
                 <Container fluid>
-                    <Button color="link"><Link to="/activities">Activities</Link></Button>
+                <Button color="primary" variant="outlined" onClick={ () => window.open("/activities") }>Activities</Button>
                     
                 </Container>
             </div>

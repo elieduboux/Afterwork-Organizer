@@ -83,7 +83,7 @@ class ActivityEdit extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Button color="primary" type="submit">Save</Button>{' '}
-                        <Button color="secondary" tag={Link} to="/activities">Cancel</Button>
+                        <Button color="secondary" onClick={() => window.open('/activities')}>Cancel</Button>
                     </FormGroup>
                 </Form>
             </Container>

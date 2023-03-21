@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { withRouter } from "react-router-dom";
 import JsonDataDisplay from './DataDisplayJson';
 import glasses from './glasses_50.png';
-import './Activity.css';
+import beer from './beer.png';
 
 class ActivityList extends Component {
   constructor(props) {
@@ -45,11 +45,12 @@ class ActivityList extends Component {
     }
     return (
       <><JsonDataDisplay />
-      <div className='glass'>
-        <img src={glasses} alt="Glasses" className='center'/>
+      <div>
+        <img src={glasses} alt="Glasses" />
+        <br />
+        <img src={beer} alt="Beer" />
       </div></>
     )
     }
 }
-
 export default withRouter(ActivityList);

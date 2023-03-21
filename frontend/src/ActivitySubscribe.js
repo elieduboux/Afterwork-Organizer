@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Container, Form, FormGroup, Input, Label } from 'reactstrap';
-import { CSSTransition }from "react-transition-group"; 
 import AppNavbar from './AppNavbar';
 import { Tooltip } from "@mui/material";
-import Select from "@mui/joy/Select";
-import Option from "@mui/joy/Select";
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import Unsubscribe  from '@mui/icons-material/Unsubscribe';
 import { IconButton, Button, Box, Stack } from "@mui/material";
-import { green, blue, red} from "@mui/material/colors";
+import Preferences from './Preferences';
+import { DatePicker } from '@mui/x-date-pickers';
 
 class ActivitySubscribe extends Component {
-
    
     emptyItem = {
         name: '',
@@ -38,7 +35,7 @@ class ActivitySubscribe extends Component {
 
     async componentDidMount() {
         if (this.props.match.params.id !== 'new') {
-            const activity = await (await fetch(`/activities/${this.props.match.params.id}/subscribe`)).json();
+            const activity = await (await fetch(`/activities-subscribe/${this.props.match.params.id}`)).json();
             this.setState({item: activity});
         }
     }
@@ -56,7 +53,7 @@ class ActivitySubscribe extends Component {
         event.preventDefault();
         const {item} = this.state;
     
-        await fetch('/activities' + (item.id ? '/' + item.id : ''), {
+        await fetch('/activities-subscribe' + (item.id ? '/' + item.id : ''), {
             method: (item.id) ? 'PUT' : 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -69,7 +66,7 @@ class ActivitySubscribe extends Component {
 
     render() {
         const {item} = this.state;
-        const title = <h2>{item.id ? 'Subscribe to an Activity' : 'Subscribe to an activity'}</h2>;
+        const title = <h2>{item.id ? 'Subscribe to an Activity' : 'You are already subscribed to this activity'}</h2>;
         
         return <div>
             <AppNavbar/>
@@ -78,43 +75,36 @@ class ActivitySubscribe extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label for="name">Name</Label>
-                        <Input type="text" name="name" id="name" value={item.name || ''}
+                        <Input type="text" placeholder="Please enter your name" name="name" id="name" value={item.name || ''}
                                onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="organisator">Surname</Label>
-                        <Input type="text" name="surname" id="organisator" value={item.organisator || ''}
+                        <Label for="surname">Surname</Label>
+                        <Input type="text" name="surname" placeholder="Please enter your surname" id="organisator" value={item.surname || ''}
                                onChange={this.handleChange} autoComplete="surname"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="type">Preferences</Label>
-                        <Select 
-                            defaultValue="Video Game Competition" placeholder="Please enter preferences or select suggested preferences"
-                            sw={{
-                                width: 200,
-                                height: 50,
-                            }}
-                        >
-                        <Option value="escape game">Escape Game</Option>
-                        <Option value="video game competition">Video Game Competition</Option>
-                        <Option value="bar">Bar</Option>
-                        <Option value="watching football">Watching Football on TV</Option>
-                        <Option value="pizzeria">Pizzeria</Option>
-                        <Option value="sports">Sports</Option>
-                        <Option value="other">Other</Option>
-                        </Select>
+                        <Preferences />
                     </FormGroup>
                     <FormGroup>
                         <Label for="collaborator">Collaborator</Label>
-                        <Input type="text" name="collaborator" id="collaborator" value={item.collaborator || ''}
+                        <Input type="text" name="collaborator" placeholder="Please enter the collaborator username" id="collaborator" value={item.collaborator || ''}
                                onChange={this.handleChange} autoComplete="collaborator"/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="date">Date</Label>
+                        <br />
+                    <DatePicker />
                     </FormGroup>
                     <FormGroup>
                         
                         <Stack direction="row" spacing={2}>
-                            <IconButton type="submit" variant="underlined" color="info"><SubscriptionsIcon /></IconButton>
+                            <Tooltip title="Subscribe">
+                            <IconButton type="submit" variant="outlined" color="info">
+                                <SubscriptionsIcon /></IconButton></Tooltip>
                             <Tooltip title="Cancel Subscription">
-                                <IconButton variant="contained" size="sm" color="error" tag={Link} underlined="hover" to="/activities">
+                                <IconButton type="cancel" variant="outlined" size="sm" color="error" onClick={() => window.open('localhost:3000/activities')}>
                                     <Unsubscribe /></IconButton>
                             </Tooltip> 
                         </Stack>
