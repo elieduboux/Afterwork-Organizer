@@ -1,0 +1,56 @@
+
+.new-event 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group 
+{
+    margin-bottom: 1rem;
+}
+
+label 
+{
+    display: block;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+input,select 
+{
+    display: block;
+    width: 20rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+
+button 
+{
+    margin: 1rem auto 0;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.event-card
+{
+    background-color: #f2f2f2;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+    width: 20rem;
+}
+
+.event-card h2 
+{
+    margin-bottom: 0.5rem;
+}
