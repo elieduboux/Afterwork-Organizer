@@ -34,8 +34,8 @@ class ActivitySubscribe extends Component {
     }
 
     async componentDidMount() {
-        if (this.props.match.params.id !== 'new') {
-            const activity = await (await fetch(`/activities-subscribe/${this.props.match.params.id}`)).json();
+        if (!this.props.match.params.id) {
+            const activity = await (await fetch(`subscribe/${this.props.match.params.id}`)).json();
             this.setState({item: activity});
         }
     }
@@ -53,7 +53,7 @@ class ActivitySubscribe extends Component {
         event.preventDefault();
         const {item} = this.state;
     
-        await fetch('/activities-subscribe' + (item.id ? '/' + item.id : ''), {
+        await fetch('subscribe' + (item.id ? '/' + item.id : ''), {
             method: (item.id) ? 'PUT' : 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -61,12 +61,12 @@ class ActivitySubscribe extends Component {
             },
             body: JSON.stringify(item),
         });
-        this.props.history.push('/activities');
+        this.props.history.push('subscribe');
     }
 
     render() {
         const {item} = this.state;
-        const title = <h2>{item.id ? 'Subscribe to an Activity' : 'You are already subscribed to this activity'}</h2>;
+        const title = <h2>{item.id ? 'Subscribe to an Activity' : 'This activity does not exist!'}</h2>;
         
         return <div>
             <AppNavbar/>
@@ -104,7 +104,7 @@ class ActivitySubscribe extends Component {
                             <IconButton type="submit" variant="outlined" color="info">
                                 <SubscriptionsIcon /></IconButton></Tooltip>
                             <Tooltip title="Cancel Subscription">
-                                <IconButton type="cancel" variant="outlined" size="sm" color="error" onClick={() => window.open('localhost:3000/activities')}>
+                                <IconButton type="cancel" variant="outlined" size="sm" color="error" onClick={() => window.open('/activities')}>
                                     <Unsubscribe /></IconButton>
                             </Tooltip> 
                         </Stack>

@@ -54,7 +54,7 @@ class ActivityEdit extends Component {
 
     render() {
         const {item} = this.state;
-        const title = <h2>{item.id ? 'Edit Activity' : 'Add Activity'}</h2>;
+        const title = <h2>{item.id ? 'Add Activity' : 'Edit Activity'}</h2>;
     
         return <div>
             <AppNavbar/>

@@ -25,7 +25,7 @@ function Preferences() {
         <MenuItem value={4}>Watching Football on TV</MenuItem>
         <MenuItem value={5}>Pizzeria</MenuItem>
         <MenuItem value={6}>Sports</MenuItem>
-        <MenuItem value={7}>Driver</MenuItem>
+        <MenuItem value={7}>Diver</MenuItem>
         <MenuItem value={8}>Climbing</MenuItem>
         <MenuItem value={9}>Other</MenuItem>
       </Select>
