@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container} from "reactstrap";
-import AppNavbar from "./AppNavbar";
 import { Link} from "react-router-dom";
 import { Tooltip } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
@@ -43,7 +42,7 @@ function JsonDataDisplay(){
  
       return (
         <div>
-        <AppNavbar />
+        
             <Container fluid>
                 <div className="float-right">
                     <Button color="success" variant="outlined" onClick={ () => window.open("/activities/new") }>Add Activity<AddIcon /></Button>
