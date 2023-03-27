@@ -1,22 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
-import AppNavbar from './AppNavbar';
-import { Link } from 'react-router-dom';
-import { Button, Container } from 'reactstrap';
-import logo from './logo_50.png';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-class Home extends Component {
-    render() {
-        return (
-            <div>
-                <AppNavbar/>
-                <img src={logo} alt="Logo"/>
-                <Container fluid>
-                <Button color="primary" variant="outlined" onClick={ () => window.open("/activities") }>Activities</Button>
-                    
-                </Container>
-            </div>
-        );
-    }
+function Home() {
+
+    window.location.href = 'http://localhost:3000/activities';
 }
 export default Home;

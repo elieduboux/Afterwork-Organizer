@@ -15,9 +15,12 @@ class App extends Component {
         <Router>
         <Switch>
         <Route path="/" exact={true}>
+          <Home/>
+        </Route>
+        <Route path="/activities" exact={true}>
           <ActivityList />
         </Route>
-        <Route path="/activity/:id">
+        <Route path="/activities/:id">
           <ActivityEdit />
         </Route>
         <Route path="/subscribe/:id" >

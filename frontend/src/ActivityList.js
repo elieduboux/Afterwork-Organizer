@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import JsonDataDisplay from './DataDisplayJson';
 import glasses from './glasses_50.png';
 import beer from './beer.png';
+import logo from './logo_50.png';
+import AppNavbar from "./AppNavbar";
 
 class ActivityList extends Component {
   constructor(props) {
@@ -44,10 +46,12 @@ class ActivityList extends Component {
       return <p>Loading...</p>
     }
     return (
-      <><JsonDataDisplay />
+      <>
       <div>
+        <AppNavbar />
         <img src={glasses} alt="Glasses" />
         <br />
+        <JsonDataDisplay />
         <img src={beer} alt="Beer" />
       </div></>
     )
