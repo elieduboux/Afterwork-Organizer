@@ -5,3 +5,9 @@
     align-items:center;
     justify-content:center;
 }
+
+.trbody tr:hover {
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+  }

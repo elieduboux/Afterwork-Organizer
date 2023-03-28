@@ -9,6 +9,7 @@ import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import { IconButton, Button, Box, Stack } from "@mui/material";
 import {Table, TableBody, TableHead, TableRow} from "@mui/material";
 import JsonData from './activities.json';
+import './Activity.css';
 
 function JsonDataDisplay(){
     const ActivityList = JsonData.map(activity => {
@@ -57,7 +58,7 @@ function JsonDataDisplay(){
                         <th width="40%">Collaborator</th>
                     </TableRow>
                 </TableHead>
-                <TableBody>{ActivityList}</TableBody>
+                <TableBody className="trbody">{ActivityList}</TableBody>
             </Table>
             </Container>
         </div>
