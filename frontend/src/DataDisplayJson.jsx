@@ -31,7 +31,7 @@ function JsonDataDisplay(){
                     <DeleteIcon /></IconButton> 
                 </Tooltip>
                  <Tooltip title="Subscribe to Activity">
-                 <IconButton variant="contained" size="small" color="info" underline="hover" onClick={ () => window.open(`/subscribe`) }>
+                 <IconButton variant="contained" size="small" color="info" underline="hover" onClick={ () => window.open(`/subscribe/${activity.id}`) }>
                   <SubscriptionsIcon /></IconButton>
                  </Tooltip>
                 

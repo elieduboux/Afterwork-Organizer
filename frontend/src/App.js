@@ -17,8 +17,9 @@ class App extends Component {
         </Route>
         <Route path="/activities/:id"><ActivityEdit />
         </Route>
-        <Route path="/activities/subscribe"><ActivitySubscribe />
+        <Route path="/subscribe/:id"><ActivitySubscribe />
         </Route>
+        <Route path="/subscribe"><ActivitySubscribe /></Route>
         </Switch>
         </Router>
     )

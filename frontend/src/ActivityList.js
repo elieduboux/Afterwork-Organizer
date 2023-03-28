@@ -8,6 +8,7 @@ import { Button, Container } from 'reactstrap';
 import logo from './logo_50.png';
 import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
 import './Activity.css';
+import { Link } from 'react-router-dom';
 
 class ActivityList extends Component {
   constructor(props) {
@@ -63,6 +64,7 @@ class ActivityList extends Component {
           <img src={beer} alt="Beer" />
         </div>
       </div>
+      <Button onClick={() => window.open("/subscribe")}><Link to="/subscribe">Subscribe to Activity</Link></Button>
       </>
     )
     }

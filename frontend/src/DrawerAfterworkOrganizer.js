@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Edit from '@mui/icons-material/Edit';
 import Subscriptions from '@mui/icons-material/Subscriptions';
 import Login from '@mui/icons-material/Login';
+import Logout from '@mui/icons-material/Logout';
 import { CssBaseline, MenuItem, Toolbar } from '@mui/material';
 import ActivityList from './ActivityList';
 import AppNavbar from './AppNavbar';
@@ -37,6 +38,11 @@ export default function DrawerAfterworkOrganizer() {
       <ListItem>
         <ListItemText>          
           <ListItemButton><Login /><Link to={"/login"}>Login</Link></ListItemButton>
+        </ListItemText>
+      </ListItem>
+      <ListItem>
+        <ListItemText>          
+          <ListItemButton><Logout /><Link to={"/logout"}>Logout</Link></ListItemButton>
         </ListItemText>
       </ListItem>
       <ListItem>
