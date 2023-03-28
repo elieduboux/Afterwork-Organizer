@@ -5,6 +5,7 @@ import glasses from './glasses_50.png';
 import beer from './beer.png';
 import logo from './logo_50.png';
 import AppNavbar from "./AppNavbar";
+import './Activity.css';
 
 class ActivityList extends Component {
   constructor(props) {
@@ -49,10 +50,15 @@ class ActivityList extends Component {
       <>
       <div>
         <AppNavbar />
-        <img src={glasses} alt="Glasses" />
-        <br />
+        <div className='img-container'>
+          <img src={glasses} alt="Glasses" />
+          <br />
+        </div>
+        
         <JsonDataDisplay />
-        <img src={beer} alt="Beer" />
+        <div className='img-container'>
+          <img src={beer} alt="Beer" />
+        </div>
       </div></>
     )
     }
