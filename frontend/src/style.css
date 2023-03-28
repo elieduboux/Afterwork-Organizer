@@ -8,3 +8,11 @@
     width: 90%;
     transition: width 0.4s ease-in;
 }
+
+.logo-image {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
+  }

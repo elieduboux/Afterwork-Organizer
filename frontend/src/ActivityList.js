@@ -7,7 +7,7 @@ import beer from './beer.png';
 import { Button, Container } from 'reactstrap';
 import logo from './logo_50.png';
 import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
-import { Drawer } from '@mui/material';
+import './Activity.css';
 
 class ActivityList extends Component {
   constructor(props) {
@@ -49,20 +49,21 @@ class ActivityList extends Component {
       return <p>Loading...</p>
     }
     return (
-      
       <>
       <div>
-        <AppNavbar/>
+        <AppNavbar position="fixed" />
         <DrawerAfterworkOrganizer />
-        <img src={logo} alt="Logo"/>
-      
+        <div className='img-container'>
+          <img src={glasses} alt="Glasses" />
+          <br />
         </div>
-      <JsonDataDisplay />
-      <div>
-        <img src={glasses} alt="Glasses" />
-        <br />
-        <img src={beer} alt="Beer" />
-      </div></>
+
+        <JsonDataDisplay />
+        <div className='img-container'>
+          <img src={beer} alt="Beer" />
+        </div>
+      </div>
+      </>
     )
     }
 }

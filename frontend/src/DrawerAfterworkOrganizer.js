@@ -12,41 +12,45 @@ import Edit from '@mui/icons-material/Edit';
 import Subscriptions from '@mui/icons-material/Subscriptions';
 import Login from '@mui/icons-material/Login';
 import { CssBaseline, MenuItem, Toolbar } from '@mui/material';
+import ActivityList from './ActivityList';
+import AppNavbar from './AppNavbar';
+import { Link } from 'react-router-dom';
 
 export default function DrawerAfterworkOrganizer() {
   const [ open, setOpen ] = React.useState(false);
 
 
   return (
-    <Box sx={{ display: 'flex'}}>
-      <CssBaseline />
-    
-    <Drawer sx={{
-      width: 10,
+    <Box >
+    <Drawer 
+      open={open}
+      variant="permanent"
+      anchor="left"
+      sx={{
       flexShrink: 0,
       "& .MuiDrawer-paper": {
-        width: 10,
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
       }
-     }}
-     variant="permanent"
-     anchor="left" />
-     <Toolbar />
+     }}/>
      <Divider />
      <List>
-      {['Login', 'Subscribe', 'Edit'].map(
-        (text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {[<Login />, <Subscriptions />, <Edit />][index]}
-              </ListItemIcon>
-            </ListItemButton>
-          </ListItem>
-        )
-      )}
-     </List>
-    </Box>
+      <ListItem>
+        <ListItemText>          
+          <ListItemButton><Login /><Link to={"/login"}>Login</Link></ListItemButton>
+        </ListItemText>
+      </ListItem>
+      <ListItem>
+        <ListItemText>
+          <ListItemButton><Edit /><Link to={'/activities/new'}>Add New Activity</Link></ListItemButton>
+        </ListItemText>
+      </ListItem>
+      <ListItem>
+        <ListItemText>
+          <ListItemButton><Subscriptions /><Link to={'/subscribe/'}>Subscribe to Activity</Link></ListItemButton>
+        </ListItemText>
+      </ListItem>
       
+      </List>
+      </Box>
   );
 }

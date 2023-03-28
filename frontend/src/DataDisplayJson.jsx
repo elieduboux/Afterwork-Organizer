@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container} from "reactstrap";
-import AppNavbar from "./AppNavbar";
 import { Link} from "react-router-dom";
 import { Tooltip } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
@@ -10,6 +9,7 @@ import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import { IconButton, Button, Box, Stack } from "@mui/material";
 import {Table, TableBody, TableHead, TableRow} from "@mui/material";
 import JsonData from './activities.json';
+import './Activity.css';
 
 function JsonDataDisplay(){
     const ActivityList = JsonData.map(activity => {
@@ -31,7 +31,7 @@ function JsonDataDisplay(){
                     <DeleteIcon /></IconButton> 
                 </Tooltip>
                  <Tooltip title="Subscribe to Activity">
-                 <IconButton variant="contained" size="small" color="info" underline="hover" onClick={ () => window.open(`subscribe/${activity.id}`) }>
+                 <IconButton variant="contained" size="small" color="info" underline="hover" onClick={ () => window.open(`/subscribe`) }>
                   <SubscriptionsIcon /></IconButton>
                  </Tooltip>
                 
@@ -43,7 +43,7 @@ function JsonDataDisplay(){
  
       return (
         <div>
-        <AppNavbar />
+        
             <Container fluid>
                 <div className="float-right">
                     <Button color="success" variant="outlined" onClick={ () => window.open("/activities/new") }>Add Activity<AddIcon /></Button>
@@ -58,7 +58,7 @@ function JsonDataDisplay(){
                         <th width="40%">Collaborator</th>
                     </TableRow>
                 </TableHead>
-                <TableBody>{ActivityList}</TableBody>
+                <TableBody className="trbody">{ActivityList}</TableBody>
             </Table>
             </Container>
         </div>

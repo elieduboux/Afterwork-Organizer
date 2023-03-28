@@ -9,21 +9,17 @@ import ActivitySubscribe from './ActivitySubscribe';
 class App extends Component {
   render() {
     return (
-      
-
-    
         <Router>
         <Switch>
-        <Route path="/" exact={true}>
-          <ActivityList />
+        <Route path="/" exact={true}><Home/>
         </Route>
-        <Route path="/activity/:id">
-          <ActivityEdit />
+        <Route path="/activities" exact={true}><ActivityList />
         </Route>
-        <Route path="/subscribe/:id" >
-          <ActivitySubscribe />
+        <Route path="/activities/:id"><ActivityEdit />
         </Route>
-          </Switch>
+        <Route path="/activities/subscribe"><ActivitySubscribe />
+        </Route>
+        </Switch>
         </Router>
     )
   }

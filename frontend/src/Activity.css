@@ -5,3 +5,30 @@
     align-items:center;
     justify-content:center;
 }
+
+.trbody tr:hover {
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+}
+
+.img-container {
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 450px;
+    transition: transform 0.3s;
+}
+  
+.img-container img:hover {
+    transform: scale(1.5);
+}
+
+.logo-image {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
+  }

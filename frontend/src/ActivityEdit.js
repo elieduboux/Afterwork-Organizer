@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
+import { Stack, Tooltip, IconButton } from '@mui/material';
+import Add from '@mui/icons-material/Add';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 class ActivityEdit extends Component {
 
@@ -63,27 +66,34 @@ class ActivityEdit extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label for="name">Name</Label>
-                        <Input type="text" name="name" id="name" value={item.name || ''}
+                        <Input type="text" name="name" placeholder="Please enter the activity name" id="name" value={item.name || ''}
                                onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="type">Type</Label>
-                        <Input type="text" name="type" id="type" value={item.type || ''}
+                        <Input type="text" name="type" placeholder="Please enter the activity type" id="type" value={item.type || ''}
                                onChange={this.handleChange} autoComplete="type"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="organisator">Organisator</Label>
-                        <Input type="text" name="organisator" id="organisator" value={item.organisator || ''}
+                        <Input type="text" name="organisator" placeholder="Please enter the activity organisator" id="organisator" value={item.organisator || ''}
                                onChange={this.handleChange} autoComplete="organisator"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="collaborator">Collaborator</Label>
-                        <Input type="text" name="collaborator" id="collaborator" value={item.collaborator || ''}
+                        <Input type="text" name="collaborator" placeholder="Please enter the collaborator" id="collaborator" value={item.collaborator || ''}
                                onChange={this.handleChange} autoComplete="collaborator"/>
                     </FormGroup>
                     <FormGroup>
-                        <Button color="primary" type="submit">Save</Button>{' '}
-                        <Button color="secondary" onClick={() => window.open('/activities')}>Cancel</Button>
+                    <Stack direction="row" spacing={2}>
+                            <Tooltip title="Add/Edit Activity">
+                            <IconButton type="submit" variant="outlined" color="info">
+                                < Add/></IconButton></Tooltip>
+                            <Tooltip title="Cancel">
+                                <IconButton type="cancel" variant="outlined" size="sm" color="error" onClick={() => window.open('/activities')}>
+                                    <CancelIcon /></IconButton>
+                            </Tooltip> 
+                        </Stack>
                     </FormGroup>
                 </Form>
             </Container>

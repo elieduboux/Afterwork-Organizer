@@ -35,7 +35,7 @@ class ActivitySubscribe extends Component {
 
     async componentDidMount() {
         if (!this.props.match.params.id) {
-            const activity = await (await fetch(`subscribe/${this.props.match.params.id}`)).json();
+            const activity = await (await fetch(`/activities/subscribe/${this.props.match.params.id}`)).json();
             this.setState({item: activity});
         }
     }
@@ -53,7 +53,7 @@ class ActivitySubscribe extends Component {
         event.preventDefault();
         const {item} = this.state;
     
-        await fetch('subscribe' + (item.id ? '/' + item.id : ''), {
+        await fetch('/activities/subscribe' + (item.id ? '/' + item.id : ''), {
             method: (item.id) ? 'PUT' : 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -61,7 +61,7 @@ class ActivitySubscribe extends Component {
             },
             body: JSON.stringify(item),
         });
-        this.props.history.push('subscribe');
+        this.props.history.push('/activities/subscribe');
     }
 
     render() {
