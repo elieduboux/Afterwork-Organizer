@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
 import { withRouter } from "react-router-dom";
+import AppNavbar from './AppNavbar';
 import JsonDataDisplay from './DataDisplayJson';
 import glasses from './glasses_50.png';
 import beer from './beer.png';
+import { Button, Container } from 'reactstrap';
+import logo from './logo_50.png';
+import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
+import { Drawer } from '@mui/material';
 
 class ActivityList extends Component {
   constructor(props) {
@@ -44,7 +49,15 @@ class ActivityList extends Component {
       return <p>Loading...</p>
     }
     return (
-      <><JsonDataDisplay />
+      
+      <>
+      <div>
+        <AppNavbar/>
+        <DrawerAfterworkOrganizer />
+        <img src={logo} alt="Logo"/>
+      
+        </div>
+      <JsonDataDisplay />
       <div>
         <img src={glasses} alt="Glasses" />
         <br />
