@@ -6,6 +6,7 @@ import glasses from './glasses_50.png';
 import beer from './beer.png';
 import { Button, Container } from 'reactstrap';
 import logo from './logo_50.png';
+import logo_appnavbar from './logo_appnavbar.png';
 import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
 import './Activity.css';
 import { Link } from 'react-router-dom';
@@ -52,8 +53,12 @@ class ActivityList extends Component {
     return (
       <>
       <div>
-        <AppNavbar position="fixed" />
+        <AppNavbar position="fixed"/>
+        <div className='img-container'>
+          <img src={logo} alt="Logo" />
+        </div>
         <DrawerAfterworkOrganizer />
+        
         <div className='img-container'>
           <img src={glasses} alt="Glasses" />
           <br />
@@ -64,7 +69,6 @@ class ActivityList extends Component {
           <img src={beer} alt="Beer" />
         </div>
       </div>
-      <Button onClick={() => window.open("/subscribe")}><Link to="/subscribe">Subscribe to Activity</Link></Button>
       </>
     )
     }

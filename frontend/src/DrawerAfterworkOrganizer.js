@@ -16,13 +16,15 @@ import { CssBaseline, MenuItem, Toolbar } from '@mui/material';
 import ActivityList from './ActivityList';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
-
+import logo_appnavbar from "./logo_appnavbar.png";
 export default function DrawerAfterworkOrganizer() {
   const [ open, setOpen ] = React.useState(false);
 
 
   return (
+
     <Box >
+      <image src={logo_appnavbar}></image>
     <Drawer 
       open={open}
       variant="permanent"
