@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import logo_appnavbar from './logo_appnavbar.png';
 import Home from '@mui/icons-material/Home';
 import { AppBar, Toolbar, Box } from '@mui/material';
+import './App.css';
 
 export default class AppNavbar extends Component {
     constructor(props) {
@@ -20,16 +21,16 @@ export default class AppNavbar extends Component {
 
     render() {
         return (
-
-            <Navbar color="dark" dark expand="md">
-                <NavbarBrand tag={Link} to="/"><Home /></NavbarBrand>
+            <Navbar className='color-nav' variant='light' expand="md">
+                <NavbarBrand tag={Link} to="/"><Home color='white'/></NavbarBrand>
                             <Box
                                 component="img"
                                 sx={{
                                     height: 64,
                                 }}
                                 alt="Your logo."
-                                src={logo_appnavbar} />
+                                src={logo_appnavbar}
+                                paddingLeft='5px' />
             </Navbar>
         )
     }

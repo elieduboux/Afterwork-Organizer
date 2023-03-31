@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.color-nav {
+  background-color: rgb(80, 2, 80);
+}
+
+.left-drawer {
+  background-color: rgb(80, 2, 80);
+}
