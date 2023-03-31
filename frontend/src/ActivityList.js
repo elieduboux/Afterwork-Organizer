@@ -53,10 +53,7 @@ class ActivityList extends Component {
     return (
       <>
       <div>
-        <AppNavbar position="fixed"/>
-        <div className='img-container'>
-          <img src={logo} alt="Logo" />
-        </div>
+        <AppNavbar />
         <DrawerAfterworkOrganizer />
         
         <div className='img-container'>
