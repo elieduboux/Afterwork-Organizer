@@ -26,7 +26,7 @@ class App extends Component {
         <Route path="/subscribe/:id" >
           <ActivitySubscribe />
         </Route>
-          </Switch>
+        </Switch>
         </Router>
     )
   }

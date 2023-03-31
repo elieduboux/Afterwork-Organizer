@@ -1,11 +1,11 @@
-import React, { Component, useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Tooltip } from "@mui/material";
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import Unsubscribe  from '@mui/icons-material/Unsubscribe';
-import { IconButton, Button, Box, Stack } from "@mui/material";
+import { IconButton, Stack } from "@mui/material";
 import Preferences from './Preferences';
 import { DatePicker } from '@mui/x-date-pickers';
 
@@ -24,11 +24,14 @@ class ActivitySubscribe extends Component {
             item: this.emptyItem,
             shouldShowSubscribe: false
         };
+        /*
         this.showSubscribe = this.showSubscribe.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        */
     }
 
+    /*
     showSubscribe() {
         this.setState({ shouldShowSubscribe: true });
     }
@@ -63,6 +66,7 @@ class ActivitySubscribe extends Component {
         });
         this.props.history.push('subscribe');
     }
+    */
 
     render() {
         const {item} = this.state;

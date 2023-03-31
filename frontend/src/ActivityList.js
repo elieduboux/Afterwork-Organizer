@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 import JsonDataDisplay from './DataDisplayJson';
 import glasses from './glasses_50.png';
 import beer from './beer.png';
-import logo from './logo_50.png';
 import AppNavbar from "./AppNavbar";
 import './Activity.css';
 
@@ -33,15 +32,6 @@ class ActivityList extends Component {
     });
   }
   render() {
-    /* 
-    const styles = theme => ({
-      tableCell: {
-        '&:hover': {
-          backgroundColor: "blue !important"
-        }
-      }
-    });
-  */
     const {isLoading} = this.state;
     if (isLoading) {
       return <p>Loading...</p>
@@ -54,11 +44,11 @@ class ActivityList extends Component {
           <img src={glasses} alt="Glasses" />
           <br />
         </div>
-        
-        <JsonDataDisplay />
         <div className='img-container'>
           <img src={beer} alt="Beer" />
         </div>
+        <JsonDataDisplay />
+        
       </div></>
     )
     }
