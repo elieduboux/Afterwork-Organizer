@@ -40,15 +40,19 @@ class ActivityList extends Component {
       <>
       <div>
         <AppNavbar />
-        <div className='img-container'>
-          <img src={glasses} alt="Glasses" />
-          <br />
-        </div>
-        <div className='img-container'>
-          <img src={beer} alt="Beer" />
+        <div class="row">
+          <div class="column">
+            <div className='img-container'>
+              <img src={glasses} alt="Glasses" width="200" height="200"/>
+            </div>
+          </div>
+          <div class="column">
+            <div className='img-container' >
+              <img src={beer} alt="Beer" width="200" height="200"/>
+            </div>
+          </div>
         </div>
         <JsonDataDisplay />
-        
       </div></>
     )
     }
