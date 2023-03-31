@@ -17,7 +17,7 @@
 }
 
 .img-container img {
-    width: 500px;
+    width: 400px;
     transition: transform 0.3s;
 }
   
@@ -27,9 +27,13 @@
 
 .row {
     display: flex;
+    padding: 20px;
+    float: left;
 }
   
-  .column {
+.column {
     flex: 23.33%;
-    padding: 3px;
-  }
+    padding-top: 15px;
+    padding-left: 20px;
+    float: left;
+}
