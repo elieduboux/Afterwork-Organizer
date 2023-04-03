@@ -55,15 +55,19 @@ class ActivityList extends Component {
       <Grid container>
         <Grid item xs>
           <DrawerAfterworkOrganizer />
-          <Grid container >
-            <Grid item xs md={6}>
+          <Grid container paddingLeft={10}>
+            <Grid item xs md >
               <JsonDataDisplay />
-            </Grid>  
-            <Grid item xs md={6}>
-              <div className='img-container'><img src={glasses} alt="Glasses" /></div>
             </Grid>
-            <Grid item xs md={6}>
-              <div className='img-container'><img src={beer} alt="Beer" /></div>
+            <Grid container >
+              <Grid item xs md={6}>
+                <Grid item xs md={6}>
+                  <div className='img-container'><img src={glasses} alt="Glasses" /></div>
+                </Grid>
+                <Grid item xs md={6}>
+                  <div className='img-container'><img src={beer} alt="Beer" /></div>
+>               </Grid> 
+              </Grid>          
             </Grid>
           </Grid>
         </Grid>
