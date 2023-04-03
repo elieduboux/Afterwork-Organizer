@@ -4,12 +4,11 @@ import AppNavbar from './AppNavbar';
 import JsonDataDisplay from './DataDisplayJson';
 import glasses from './glasses_50.png';
 import beer from './beer.png';
-import { Button, Container } from 'reactstrap';
-import logo from './logo_50.png';
-import logo_appnavbar from './logo_appnavbar.png';
 import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
-import './Activity.css';
 import { Link } from 'react-router-dom';
+import { Grid } from '@mui/material';
+import { Drawer } from '@mui/material';
+import { drawerWidth } from './DrawerAfterworkOrganizer';
 
 class ActivityList extends Component {
   constructor(props) {
@@ -53,18 +52,22 @@ class ActivityList extends Component {
     return (
       <>
       <div>
-        <AppNavbar />
-        <DrawerAfterworkOrganizer />
-        
-        <div className='img-container'>
-          <img src={glasses} alt="Glasses" />
-          <br />
-        </div>
-
-        <JsonDataDisplay />
-        <div className='img-container'>
-          <img src={beer} alt="Beer" />
-        </div>
+      <Grid container>
+        <Grid item xs>
+          <DrawerAfterworkOrganizer />
+          <Grid container >
+            <Grid item xs md={6}>
+              <JsonDataDisplay />
+            </Grid>  
+            <Grid item xs md={6}>
+              <div className='img-container'><img src={glasses} alt="Glasses" /></div>
+            </Grid>
+            <Grid item xs md={6}>
+              <div className='img-container'><img src={beer} alt="Beer" /></div>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
       </div>
       </>
     )

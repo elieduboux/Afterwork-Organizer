@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Navbar, NavbarBrand} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import logo_appnavbar from './logo_appnavbar.png';
+import logo from './logo.png';
 import Home from '@mui/icons-material/Home';
-import { AppBar, Toolbar, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import './App.css';
 
 export default class AppNavbar extends Component {
@@ -22,14 +22,14 @@ export default class AppNavbar extends Component {
     render() {
         return (
             <Navbar className='color-nav' variant='light' expand="md">
-                <NavbarBrand tag={Link} to="/"><Home color='white'/></NavbarBrand>
+                <NavbarBrand tag={Link} to="/"><Home style={{ color: '#fff' }}/></NavbarBrand>
                             <Box
                                 component="img"
                                 sx={{
                                     height: 64,
                                 }}
-                                alt="Your logo."
-                                src={logo_appnavbar}
+                                alt="Your logo"
+                                src={logo}
                                 paddingLeft='5px' />
             </Navbar>
         )

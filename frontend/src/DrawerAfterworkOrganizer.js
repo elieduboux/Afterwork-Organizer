@@ -6,16 +6,18 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import Edit from '@mui/icons-material/Edit';
 import Subscriptions from '@mui/icons-material/Subscriptions';
 import Login from '@mui/icons-material/Login';
 import Logout from '@mui/icons-material/Logout';
-import { CssBaseline, MenuItem, Toolbar } from '@mui/material';
-import ActivityList from './ActivityList';
-import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 import './App.css';
+import Divider  from '@mui/material/Divider';
+import AppNavbar from './AppNavbar';
 
+export const drawerWidth = 240;
 export default function DrawerAfterworkOrganizer() {
   const [ open, setOpen ] = React.useState(false);
 
@@ -24,40 +26,48 @@ export default function DrawerAfterworkOrganizer() {
     <Box >
     <Button onClick={() => setOpen(true)}>Menu</Button>
     <Drawer 
+        variant="permanent"
         open={open}
         anchor={"left"}
         onClose={() => setOpen(false)}
         sx={{
           flexShrink: 0,
-          backgroundColor: 'rgb(80, 2, 80)',
-          width: 250,
-          [`& .MuiDrawer-paper`]: { backgroundColor: 'rgb(80, 2, 80)', width: 250, boxSizing: 'border-box' },
+          backgroundColor: 'rgb(2, 7, 80)',
+          width: drawerWidth,
+          [`& .MuiDrawer-paper`]: { position: "absolute", backgroundColor: 'rgb(2, 7, 80)', width: drawerWidth, boxSizing: 'border-box' },
         }}
     >
+      <AppNavbar/>
+      <Divider />
      <List>
      <ListItem>
        <ListItemText>          
-         <ListItemButton><Login style={{color: 'white'}}/><Link to={"/login"} underline='hover'>Login</Link></ListItemButton>
+         <ListItemButton tag={Link} to="/login" style={{color: 'white'}}>
+          <Login style={{color: 'white'}}/>Login</ListItemButton>
        </ListItemText>
      </ListItem>
      <ListItem>
        <ListItemText>          
-         <ListItemButton><Logout style={{color: 'white'}}/><Link to={"/logout"} underline='hover'>Logout</Link></ListItemButton>
+         <ListItemButton tag={Link} to="/logout" style={{color: 'white'}}>
+         <Logout style={{color: 'white'}}/>Logout</ListItemButton>
+       </ListItemText>
+     </ListItem>
+     <ListItem>
+       <ListItemText>       
+      <ListItemButton tag={Link} to="/activities/new" style={{color: 'white'}}>
+        <Edit style={{color: 'white'}}/>Add New Activity</ListItemButton>
        </ListItemText>
      </ListItem>
      <ListItem>
        <ListItemText>
-         <ListItemButton><Edit style={{color: 'white'}}/><Link to={'/activities/new'} underline='hover'>Add New Activity</Link></ListItemButton>
-       </ListItemText>
-     </ListItem>
-     <ListItem>
-       <ListItemText>
-         <ListItemButton><Subscriptions style={{color: 'white'}}/><Link to={'/subscribe/'} underline='hover'>Subscribe to Activity</Link></ListItemButton>
+         <ListItemButton tag={Link} to="/subscribe" style={{color: 'white'}}>
+          <Subscriptions style={{color: 'white'}}/>Subscribe to Activity</ListItemButton>
        </ListItemText>
      </ListItem>
      </List>
     </Drawer>
       </Box>
+      
       </>
   );
 }
