@@ -49,6 +49,9 @@ class ActivityList extends Component {
             </div>
           </div>
           <div class="column">
+            
+          </div>
+          <div class="column">
             <div className='img-container' >
               <div className='beer'>
                 <img src={beer} alt="Beer" width="200" height="200"/>

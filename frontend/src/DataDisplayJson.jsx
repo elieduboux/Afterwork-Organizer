@@ -15,6 +15,10 @@ function JsonDataDisplay(){
 
   const [openModal, setOpenModal] = useState(false);
 
+ 
+
+
+
   let ActivityList = JsonData.map(activity => {
     return <tr key={activity.id}>
       <td style={{whitespace: 'nowrap'}}>{activity.name}</td>
@@ -31,7 +35,7 @@ function JsonDataDisplay(){
             
             <Tooltip title="Delete Activity">
               <IconButton size="sm" variant="outlined" color="error" underline="hover" onClick={
-                () => this.remove(activity.id)}>
+                () => JsonData.splice(activity.id, 1)}>
                 <DeleteIcon /></IconButton> 
             </Tooltip>
              <Tooltip title="Subscribe to Activity">
