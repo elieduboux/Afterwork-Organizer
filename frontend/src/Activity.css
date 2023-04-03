@@ -27,8 +27,7 @@
 
 .row {
     display: flex;
-    padding: 20px;
-    float: left;
+    padding: 20px; 
 }
   
 .column {
