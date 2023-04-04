@@ -24,14 +24,11 @@ class ActivitySubscribe extends Component {
             item: this.emptyItem,
             shouldShowSubscribe: false
         };
-        /*
         this.showSubscribe = this.showSubscribe.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        */
     }
 
-    /*
     showSubscribe() {
         this.setState({ shouldShowSubscribe: true });
     }
@@ -66,7 +63,7 @@ class ActivitySubscribe extends Component {
         });
         this.props.history.push('subscribe');
     }
-    */
+
 
     render() {
         const {item} = this.state;

@@ -8,7 +8,7 @@ function Modal({closeModal}) {
         <div className='modalContainer'>
             <Button onClick={() => closeModal(false)}> X </Button>
             <div className='title'>
-                <h4>Are you Sure you Want to Continue?</h4>
+                <h4>'Subscribe to an Activity' : 'This activity does not exist!'</h4>
             </div>
             <div className='body'>
                 <p>Continue?</p>
