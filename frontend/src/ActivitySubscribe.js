@@ -99,7 +99,7 @@ class ActivitySubscribe extends Component {
                             <IconButton type="submit" variant="underlined" color="info">
                                 <SubscriptionsIcon /></IconButton></Tooltip>
                             <Tooltip title="Cancel Subscription">
-                                <IconButton variant="contained" size="sm" color="error" onClick={() => window.open("/activities")}>
+                                <IconButton variant="contained" size="sm" color="error" tag={Link} to={"/activities"}>
                                     <Unsubscribe /></IconButton>
                             </Tooltip> 
                         </Stack>

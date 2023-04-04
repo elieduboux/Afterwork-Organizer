@@ -90,7 +90,7 @@ class ActivityEdit extends Component {
                             <IconButton type="submit" variant="outlined" color="info">
                                 < Add/></IconButton></Tooltip>
                             <Tooltip title="Cancel">
-                                <IconButton type="cancel" variant="outlined" size="sm" color="error" onClick={() => window.open('/activities')}>
+                                <IconButton type="cancel" variant="outlined" size="sm" color="error" tag={Link} to={'/activities'}>
                                     <CancelIcon /></IconButton>
                             </Tooltip> 
                         </Stack>
