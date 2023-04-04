@@ -10,11 +10,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Edit from '@mui/icons-material/Edit';
 import Subscriptions from '@mui/icons-material/Subscriptions';
+import Menu from '@mui/icons-material/Menu';
 import Login from '@mui/icons-material/Login';
 import Logout from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import './App.css';
 import Divider  from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
 import AppNavbar from './AppNavbar';
 
 export const drawerWidth = 240;
@@ -25,7 +27,7 @@ export default function DrawerAfterworkOrganizer() {
     <>
     <Box >
       <AppNavbar />
-    <Button onClick={() => setOpen(true)}>Menu</Button>
+    <IconButton variant="contained" onClick={() => setOpen(true)}><Menu /></IconButton>
     <Drawer 
         variant=""
         open={open}
