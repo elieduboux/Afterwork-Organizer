@@ -36,15 +36,6 @@ class ActivityList extends Component {
     });
   }
   render() {
-    /* 
-    const styles = theme => ({
-      tableCell: {
-        '&:hover': {
-          backgroundColor: "blue !important"
-        }
-      }
-    });
-  */
     const {isLoading} = this.state;
     if (isLoading) {
       return <p>Loading...</p>
@@ -52,28 +43,29 @@ class ActivityList extends Component {
     return (
       <>
       <div>
-      <Grid container>
-        <Grid item xs>
-          <DrawerAfterworkOrganizer />
-          <Grid container paddingLeft={10}>
-            <Grid item xs md >
-              <JsonDataDisplay />
-            </Grid>
-            <Grid container >
-              <Grid item xs md={6}>
-                <Grid item xs md={6}>
-                  <div className='img-container'><img src={glasses} alt="Glasses" /></div>
-                </Grid>
-                <Grid item xs md={6}>
-                  <div className='img-container'><img src={beer} alt="Beer" /></div>
->               </Grid> 
-              </Grid>          
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-      </div>
-      </>
+        <AppNavbar />
+        <DrawerAfterworkOrganizer />
+        <div class="row">
+          <div class="column">
+            <div className='img-container'>
+              <div className="glasses">
+                <img src={glasses} alt="Glasses" width="200" height="200"/>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            
+          </div>
+          <div class="column">
+            <div className='img-container' >
+              <div className='beer'>
+                <img src={beer} alt="Beer" width="200" height="200"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <JsonDataDisplay />
+      </div></>
     )
     }
 }

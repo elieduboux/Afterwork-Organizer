@@ -26,7 +26,6 @@ export default function DrawerAfterworkOrganizer() {
   return (
     <>
     <Box >
-      <AppNavbar />
     <IconButton variant="contained" onClick={() => setOpen(true)}><Menu /></IconButton>
     <Drawer 
         variant=""
@@ -40,7 +39,7 @@ export default function DrawerAfterworkOrganizer() {
           [`& .MuiDrawer-paper`]: { backgroundColor: 'rgb(2, 7, 80)', width: drawerWidth, boxSizing: 'border-box' },
         }}
     >
-      <AppNavbar/>
+      <AppNavbar />
       <Divider />
      <List>
      <ListItem>

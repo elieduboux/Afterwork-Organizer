@@ -87,11 +87,9 @@ class ActivityEdit extends Component {
                     <FormGroup>
                     <Stack direction="row" spacing={2}>
                             <Tooltip title="Add/Edit Activity">
-                            <IconButton type="submit" variant="outlined" color="info">
-                                < Add/></IconButton></Tooltip>
+                            <IconButton type="submit" variant="outlined" color="info"><Add /></IconButton></Tooltip>
                             <Tooltip title="Cancel">
-                                <IconButton type="cancel" variant="outlined" size="sm" color="error" tag={Link} to={'/activities'}>
-                                    <CancelIcon /></IconButton>
+                                <IconButton type="cancel" variant="outlined" size="sm" color="error" tag={Link} to={'/activities'}> <CancelIcon /></IconButton>
                             </Tooltip> 
                         </Stack>
                     </FormGroup>
