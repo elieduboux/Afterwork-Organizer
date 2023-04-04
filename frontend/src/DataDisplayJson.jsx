@@ -7,6 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import { IconButton, Button, Box, Stack } from "@mui/material";
 import {Table, TableBody, TableHead, TableRow} from "@mui/material";
+import { Link } from 'react-router-dom';
 import JsonData from './activities.json';
 import './Activity.css';
 
@@ -21,7 +22,7 @@ function JsonDataDisplay(){
             <Box>
               <Stack spacing={2} direction="row">
                 <Tooltip title="Edit Activity">
-                <IconButton variant="contained" size="sm" color="success" underline="hover" onClick={ () => window.open(`/activities/${activity.id}`) }>
+                <IconButton variant="contained" size="sm" color="success" underline="hover" component={Link} to={`/activities/${activity.id}`}>
                   <EditIcon /></IconButton>
                 </Tooltip>
                 
@@ -30,7 +31,7 @@ function JsonDataDisplay(){
                     <DeleteIcon /></IconButton> 
                 </Tooltip>
                  <Tooltip title="Subscribe to Activity">
-                 <IconButton variant="contained" size="small" color="info" underline="hover" onClick={ () => window.open(`/subscribe/${activity.id}`) }>
+                 <IconButton variant="contained" size="small" color="info" underline="hover" component={Link} to={`/subscribe/${activity.id}`}>
                   <SubscriptionsIcon /></IconButton>
                  </Tooltip>
                 
@@ -45,7 +46,7 @@ function JsonDataDisplay(){
         
             <Container fluid>
                 <div className="float-right">
-                    <Button color="success" variant="outlined" onClick={ () => window.open("/activities/new") }>Add Activity<AddIcon /></Button>
+                    <Button color="success" variant="outlined" component={Link} to={"/activities/new"}>Add Activity<AddIcon /></Button>
                 </div>
             <h3>Activities</h3>
             <Table className="mt-4">
