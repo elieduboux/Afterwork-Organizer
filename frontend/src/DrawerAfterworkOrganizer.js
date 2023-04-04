@@ -24,9 +24,10 @@ export default function DrawerAfterworkOrganizer() {
   return (
     <>
     <Box >
+      <AppNavbar />
     <Button onClick={() => setOpen(true)}>Menu</Button>
     <Drawer 
-        variant="permanent"
+        variant=""
         open={open}
         anchor={"left"}
         onClose={() => setOpen(false)}
@@ -34,7 +35,7 @@ export default function DrawerAfterworkOrganizer() {
           flexShrink: 0,
           backgroundColor: 'rgb(2, 7, 80)',
           width: drawerWidth,
-          [`& .MuiDrawer-paper`]: { position: "absolute", backgroundColor: 'rgb(2, 7, 80)', width: drawerWidth, boxSizing: 'border-box' },
+          [`& .MuiDrawer-paper`]: { backgroundColor: 'rgb(2, 7, 80)', width: drawerWidth, boxSizing: 'border-box' },
         }}
     >
       <AppNavbar/>
