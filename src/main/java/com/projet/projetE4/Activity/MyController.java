@@ -86,18 +86,38 @@ public class MyController {
     }
 
     @RequestMapping("/editActivity/{id}")
-    public String editActivity(@PathVariable("id") Long id, Model model) {
-    	ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
+    public String editActivity(@PathVariable("id") Long id, Model model, Principal principal) {
+        if (principal == null){
+            return activityList(model, null);
+        }
+        Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
+        String email = loginUser.getEmail();
+        ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Activity not exist with id :" + id));
+
+        if (!email.equals(currentActivity.getOrganizer())){
+            return activityList(model, principal);
+        }
 
         model.addAttribute("activity",currentActivity);
         return "editActivity";
     }
 
     @RequestMapping("/deleteActivity/{id}")
-    public String deleteActivity(@PathVariable Long id) {
+    public String deleteActivity(@PathVariable Long id, Model model, Principal principal) {
+        if (principal == null){
+            return activityList(model, null);
+        }
+        Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
+        String email = loginUser.getEmail();
+        ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
+                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+
+        if (!email.equals(currentActivity.getOrganizer())){
+            return activityList(model, principal);
+        }
+
     	activityRepository.deleteById(id);
         return "redirect:/";
     }
-
 }
