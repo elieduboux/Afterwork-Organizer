@@ -4,11 +4,11 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
         <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
-        <title>AfterworkOrganizer</title>
+        <title>ActivityList</title>
     </head>
     <body>
-        <th:block th:include="/_menu"></th:block>
-        <div>
+        <div class="container text-center">
+            <th:block th:include="/_menu"></th:block>
             <h2 >Activity List</h2>
             <tr>
                 <div align = "left" >
@@ -16,8 +16,7 @@
                 </div>
             </tr>
             <tr>
-                <div class="col-sm-5" align = "center">
-                    <div class="panel-body" align = "center" >
+                    <div class="panel-body">
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
@@ -37,12 +36,11 @@
                                     <td th:text="${activity.type}">Type</td>
                                     <td th:text="${activity.organisator}">Organisator</td>
                                     <td th:text="${activity.collaborator}">Collaborator</td>
-                                    <td><a th:href="@{'/edit/' + ${activity.id}}">Edit</a></td>
-                                    <td><a th:href="@{'/delete/' + ${activity.id}}">Delete</a></td>
+                                    <td><a th:href="@{'/editActivity/' + ${activity.id}}">Edit</a></td>
+                                    <td><a th:href="@{'/deleteActivity/' + ${activity.id}}">Delete</a></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
                 </div>
             </tr>
         </div>

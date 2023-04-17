@@ -1,17 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Access Denied</title>
-</head>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+        <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+        <title>Access Denied</title>
+    </head>
 
-<body>
-<!-- Include _menu.html -->
-<th:block th:include="/_menu"></th:block>
+    <body>
+    <!-- Include _menu.html -->
+    <div class="container text-center">
+        <th:block th:include="/_menu"></th:block>
 
-<h3 th:if="${message != null}" th:utext="${message}" style="color: red;"></h3>
+        <h3 th:if="${message != null}" th:utext="${message}" style="color: red;"></h3>
 
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+        <h3 th:if="${message == null}" style="color: red;">Error 403</h3>
 
-</body>
+        <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+    </div>
+    </body>
 
 </html>

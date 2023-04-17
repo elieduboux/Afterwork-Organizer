@@ -12,10 +12,6 @@ public class RegistrationService {
     private final CollaboratorService collaboratorService;
     private EmailValidator emailValidator;
     public String register(RegistrationRequest request) throws IllegalAccessException {
-        boolean isValidEmail =  emailValidator.test(request.getEmail());
-        if (!isValidEmail){
-            throw new IllegalAccessException("email not valid");
-        }
         return collaboratorService.signUpCollaborator(
                 new Collaborator(
                         request.getFirstName(),

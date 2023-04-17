@@ -1,21 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
     <title>User Info</title>
 </head>
 <body>
-<!-- Include _menu.html -->
-<th:block th:include="/_menu"></th:block>
+    <div class="container text-center">
+        <th:block th:include="/_menu"></th:block>
 
+        <h2>User Info Page</h2>
+        <h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
+        <b>This is protected page!</b>
 
-<h2>User Info Page</h2>
-<h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
-<b>This is protected page!</b>
+        <br/><br/>
 
-<br/><br/>
-
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
-
+        <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+    </div>
 </body>
 
 </html>

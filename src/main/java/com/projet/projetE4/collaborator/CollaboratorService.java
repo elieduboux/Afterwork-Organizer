@@ -80,9 +80,14 @@ public class CollaboratorService implements UserDetailsService {
     public String signUpCollaborator(Collaborator collaborator) throws IllegalAccessException {
         boolean collaboratorExists = collaboratorRepository.findCollaboratorByEmail(collaborator.getEmail())
                 .isPresent();
-        if (collaboratorExists){
-            throw new IllegalAccessException(String.format(EMAIL_ALREADY_TAKEN_MSG,collaborator.getEmail()));
+        try {
+            if (collaboratorExists){
+                throw new IllegalAccessException(String.format(EMAIL_ALREADY_TAKEN_MSG,collaborator.getEmail()));
+            }
+        }catch (Exception e){
+            return "redirect:/signUp";
         }
+
         String encodedPassword = bCryptPasswordEncoder.encode(collaborator.getPassword());
 
         collaborator.setPassword(encodedPassword);

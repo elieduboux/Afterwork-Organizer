@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @CrossOrigin(origins = "http://localhost:8100")
@@ -45,25 +46,29 @@ public class MyController {
         return "redirect:/";
     }
 
-//    @GetMapping("/{id}")
-//    public ActivityEntity getActivity(@PathVariable Long id) {
-//        return activityRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Activity not exist with id :" + id));
-//    }
+    @PostMapping("updateActivity/{id}")
+    public String updateActivity(ActivityRequest activityRequest, @PathVariable Long id) {
 
-    @PutMapping("/{id}")
-    public String updateActivity(@PathVariable Long id, @RequestBody ActivityEntity activity) {
+        ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
+                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+        currentActivity.setName(activityRequest.getName());
+        currentActivity.setType(activityRequest.getType());
+        currentActivity.setOrganisator(activityRequest.getOrganisator());
+        currentActivity.setCollaborator(activityRequest.getCollaborator());
+        activityRepository.save(currentActivity);
+        return "redirect:/";
+    }
+
+    @RequestMapping("/editActivity/{id}")
+    public String editActivity(@PathVariable("id") Long id, Model model) {
     	ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Activity not exist with id :" + id));
-    	currentActivity.setName(activity.getName());
-    	currentActivity.setType(activity.getType());
-    	currentActivity.setOrganisator(activity.getOrganisator());
-    	currentActivity.setCollaborator(activity.getCollaborator());
-    	currentActivity = activityRepository.save(activity);
 
+        model.addAttribute("activity",currentActivity);
         return "editActivity";
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/deleteActivity/{id}")
     public String deleteActivity(@PathVariable Long id) {
     	activityRepository.deleteById(id);
         return "redirect:/";

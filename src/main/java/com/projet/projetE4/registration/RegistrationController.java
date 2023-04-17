@@ -18,18 +18,6 @@ import java.security.Principal;
 public class RegistrationController {
     private RegistrationService registrationService;
 
-//    @PostMapping
-//    public String register(@RequestBody RegistrationRequest request) throws IllegalAccessException {
-//        return registrationService.register(request);
-//    }
-
-//    @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-//    public String welcomePage(Model model) {
-//        model.addAttribute("title", "Welcome");
-//        model.addAttribute("message", "This is welcome page!");
-//        return "welcomePage";
-//    }
-
     @PostMapping("/process_register")
     public String register( RegistrationRequest request) throws IllegalAccessException {
         return registrationService.register(request);

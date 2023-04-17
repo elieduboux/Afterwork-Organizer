@@ -1,41 +1,63 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
    <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+      <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
       <title>Login</title>
    </head>
    <body>
-      <!-- Include _menu.html -->
-      <th:block th:include="/_menu"></th:block>
+      <div class="container text-center">
+         <!-- Include _menu.html -->
+         <th:block th:include="/_menu"></th:block>
 
-      <h1>Login</h1>
+         <h1>Login</h1>
 
-      <!-- /login?error=true -->
-      <div th:if="${#request.getParameter('error') == 'true'}"
-            style="color:red;margin:10px 0px;">
-         Login Failed!!!<br />
-         Reason :
-         <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
-            th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
-                Static summary
-         </span>
+         <!-- /login?error=true -->
+         <div th:if="${#request.getParameter('error') == 'true'}"
+               style="color:red;margin:10px 0px;">
+            Login Failed!!!<br />
+            Reason :
+            <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+               th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                   Static summary
+            </span>
+         </div>
 
+         <h3>Enter user name and password:</h3>
+         <form name='f' th:action="@{/j_spring_security_check}" method='POST'
+               style="max-width: 600px; margin: 0 auto;">
+<!--            <table>-->
+               <div class="m-3">
+                  <div class="form-group row">
+                     <label class="col-4 col-form-label">User </label>
+                     <div class="col-8">
+                        <input type="email" name='username' class="form-control" required />
+                     </div>
+                  </div>
+               <div class="form-group row">
+                  <label class="col-4 col-form-label">Password: </label>
+                  <div class="col-8">
+                     <input type="password" name="password" class="form-control"/>
+                  </div>
+               </div>
+                  <div>
+                     <button type="submit" class="btn btn-primary">Log In</button>
+                  </div>
+
+<!--               <tr>-->
+<!--                  <td>User:</td>-->
+<!--                  <td><input type='text' name='username' value=''></td>-->
+<!--               </tr>-->
+<!--               <tr>-->
+<!--                  <td>Password:</td>-->
+<!--                  <td><input type='password' name='password' /></td>-->
+<!--               </tr>-->
+<!--               <tr>-->
+<!--                  <td><input name="submit" type="submit" value="submit" /></td>-->
+<!--               </tr>-->
+            </div>
+<!--               </table>-->
+         </form>
       </div>
-
-      <h3>Enter user name and password:</h3>
-      <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
-         <table>
-            <tr>
-               <td>User:</td>
-               <td><input type='text' name='username' value=''></td>
-            </tr>
-            <tr>
-               <td>Password:</td>
-               <td><input type='password' name='password' /></td>
-            </tr>
-            <tr>
-               <td><input name="submit" type="submit" value="submit" /></td>
-            </tr>
-         </table>
-      </form>
    </body>
 </html>
