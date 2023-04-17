@@ -7,7 +7,6 @@
    </head>
    <body>
       <div class="container text-center">
-         <!-- Include _menu.html -->
          <th:block th:include="/_menu"></th:block>
 
          <h1>Login</h1>
@@ -26,7 +25,6 @@
          <h3>Enter user name and password:</h3>
          <form name='f' th:action="@{/j_spring_security_check}" method='POST'
                style="max-width: 600px; margin: 0 auto;">
-<!--            <table>-->
                <div class="m-3">
                   <div class="form-group row">
                      <label class="col-4 col-form-label">User </label>
@@ -43,20 +41,7 @@
                   <div>
                      <button type="submit" class="btn btn-primary">Log In</button>
                   </div>
-
-<!--               <tr>-->
-<!--                  <td>User:</td>-->
-<!--                  <td><input type='text' name='username' value=''></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                  <td>Password:</td>-->
-<!--                  <td><input type='password' name='password' /></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                  <td><input name="submit" type="submit" value="submit" /></td>-->
-<!--               </tr>-->
             </div>
-<!--               </table>-->
          </form>
       </div>
    </body>

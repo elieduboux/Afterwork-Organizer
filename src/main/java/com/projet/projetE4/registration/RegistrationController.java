@@ -45,13 +45,9 @@ public class RegistrationController {
 
         if (principal != null) {
             // After user login successfully.
-            String userName = principal.getName();
+            Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
 
-            System.out.println("User Name: " + userName);
-
-            Collaborator loginedUser = (Collaborator) ((Authentication) principal).getPrincipal();
-
-            String userInfo = loginedUser.toString();
+            String userInfo = loginUser.toString();
             model.addAttribute("userInfo", userInfo);
             return "userInfoPage";
         }

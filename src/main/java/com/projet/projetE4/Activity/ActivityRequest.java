@@ -8,7 +8,11 @@ import lombok.*;
 @ToString
 public class ActivityRequest {
     private final String name;
+    private final String address;
+    private final String date;
+    private final String time;
+    private final String duration;
+    private final String participants;
     private final String type;
-    private final String organisator;
-    private final String collaborator;
+    private final String organizer;
 }
