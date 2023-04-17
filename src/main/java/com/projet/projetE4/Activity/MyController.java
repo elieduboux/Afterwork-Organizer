@@ -4,16 +4,13 @@ import java.security.Principal;
 import java.util.List;
 
 import com.projet.projetE4.collaborator.Collaborator;
-import com.projet.projetE4.collaborator.CollaboratorRole;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
 
 
 @CrossOrigin(origins = "http://localhost:8100")
@@ -49,13 +46,19 @@ public class MyController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String add(WebRequest request, Model model) {
+    public String add(WebRequest request, Principal principal, Model model) {
+        if (principal == null){
+            return activityList(model, null);
+        }
         model.addAttribute("activity", new ActivityEntity());
         return "newActivity";
     }
 
     @PostMapping("/saveActivity")
-    public String saveActivity(ActivityRequest activityRequest) {
+    public String saveActivity(ActivityRequest activityRequest, Principal principal, Model model) {
+        if (principal == null){
+            return activityList(model, null);
+        }
         ActivityEntity activity = new ActivityEntity(
                 activityRequest.getName(),
                 activityRequest.getAddress(),
@@ -69,11 +72,21 @@ public class MyController {
         return "redirect:/";
     }
 
-    @PostMapping("updateActivity/{id}")
-    public String updateActivity(ActivityRequest activityRequest, @PathVariable Long id) {
-
+    @RequestMapping(value="updateActivity/{id}", method = RequestMethod.GET)
+    public String updateActivity(ActivityRequest activityRequest, @PathVariable Long id,
+                                 Principal principal, Model model ) {
+        if (principal == null){
+            return activityList(model, null);
+        }
+        Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
+        String email = loginUser.getEmail();
         ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Activity not exist with id :" + id));
+
+        if (!email.equals(currentActivity.getOrganizer())){
+            return activityList(model, principal);
+        }
+
         currentActivity.setName(activityRequest.getName());
         currentActivity.setAddress(activityRequest.getAddress());
         currentActivity.setDate(activityRequest.getDate());
