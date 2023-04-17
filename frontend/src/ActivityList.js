@@ -5,10 +5,6 @@ import JsonDataDisplay from './DataDisplayJson';
 import glasses from './glasses_50.png';
 import beer from './beer.png';
 import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
-import { Link } from 'react-router-dom';
-import { Grid } from '@mui/material';
-import { Drawer } from '@mui/material';
-import { drawerWidth } from './DrawerAfterworkOrganizer';
 
 class ActivityList extends Component {
   constructor(props) {
