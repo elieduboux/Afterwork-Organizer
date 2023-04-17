@@ -19,8 +19,6 @@ public class CollaboratorService implements UserDetailsService {
 
     private final CollaboratorRepository collaboratorRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    //TODO: Penser à fermer la ressource (lire la doc)
-    //TODO: Est-il Thread safe (lire la doc)
 
     private final static String USER_NOT_FOUND_EMAIL_MSG =
             "user with email %s not found";

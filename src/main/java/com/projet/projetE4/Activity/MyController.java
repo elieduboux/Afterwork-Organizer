@@ -61,13 +61,13 @@ public class MyController {
         }
         ActivityEntity activity = new ActivityEntity(
                 activityRequest.getName(),
+                activityRequest.getOrganizer(),
                 activityRequest.getAddress(),
                 activityRequest.getDate(),
                 activityRequest.getTime(),
                 activityRequest.getDuration(),
-                activityRequest.getParticipants(),
-                activityRequest.getType(),
-                activityRequest.getOrganizer());
+                activityRequest.getNumberParticipants(),
+                activityRequest.getType());
         activityRepository.save(activity);
         return "redirect:/";
     }
@@ -88,17 +88,18 @@ public class MyController {
         }
 
         currentActivity.setName(activityRequest.getName());
+        currentActivity.setOrganizer(activityRequest.getOrganizer());
         currentActivity.setAddress(activityRequest.getAddress());
         currentActivity.setDate(activityRequest.getDate());
         currentActivity.setTime(activityRequest.getTime());
         currentActivity.setDuration(activityRequest.getDuration());
-        currentActivity.setParticipants(activityRequest.getParticipants());
+        currentActivity.setNumberParticipants(activityRequest.getNumberParticipants());
         currentActivity.setType(activityRequest.getType());
         activityRepository.save(currentActivity);
         return "redirect:/";
     }
 
-    @RequestMapping("/editActivity/{id}")
+    @RequestMapping(value="/editActivity/{id}", method = RequestMethod.POST)
     public String editActivity(@PathVariable("id") Long id, Model model, Principal principal) {
         if (principal == null){
             return activityList(model, null);

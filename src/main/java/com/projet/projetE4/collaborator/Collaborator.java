@@ -1,5 +1,6 @@
 package com.projet.projetE4.collaborator;
 
+import com.projet.projetE4.Activity.ActivityEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,15 +10,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 @Entity
-@Table(name= "Collaborator")
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
+@Table(name= "Collaborator")
 public class Collaborator implements UserDetails {
     @Id
     @SequenceGenerator(
@@ -40,6 +40,9 @@ public class Collaborator implements UserDetails {
     private Boolean locked = false;
     private Boolean enabled = true;
 
+    @ManyToMany(mappedBy = "collaborators", fetch = FetchType.LAZY)
+    private List<ActivityEntity> activities = new ArrayList<>();
+
     public Collaborator(String firstName, String lastName,
                         String email, String adresse,
                         String password, CollaboratorRole collaboratorRole) {
@@ -51,27 +54,6 @@ public class Collaborator implements UserDetails {
         this.collaboratorRole = collaboratorRole;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-
     @Override
     public String getPassword() {
         return password;
@@ -80,18 +62,6 @@ public class Collaborator implements UserDetails {
     @Override
     public String getUsername() {
         return email;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
     }
 
     @Override
