@@ -1,4 +1,4 @@
-package com.projet.projetE4;
+package com.projet.projetE4.Activity;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
