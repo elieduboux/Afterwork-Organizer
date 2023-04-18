@@ -7,6 +7,8 @@ import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import Unsubscribe  from '@mui/icons-material/Unsubscribe';
 import { IconButton, Button, Box, Stack } from "@mui/material";
 import Preferences from './Preferences';
+import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
+
 class ActivitySubscribe extends Component {
 
    
@@ -69,6 +71,7 @@ class ActivitySubscribe extends Component {
 
         return <div>
             <AppNavbar/>
+            <DrawerAfterworkOrganizer />
             <Container>
                 {title}
                 <Form onSubmit={this.handleSubmit}>
@@ -78,8 +81,8 @@ class ActivitySubscribe extends Component {
                                onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="organisator">Surname</Label>
-                        <Input type="text" name="surname" placeholder="Please enter your surname" id="organisator" value={item.organisator || ''}
+                        <Label for="surname">Surname</Label>
+                        <Input type="text" name="surname" placeholder="Please enter your surname" id="surname" value={item.surname || ''}
                                onChange={this.handleChange} autoComplete="surname"/>
                     </FormGroup>
                     <FormGroup>
@@ -91,9 +94,7 @@ class ActivitySubscribe extends Component {
                                onChange={this.handleChange} autoComplete="collaborator"/>
                     </FormGroup>
                 
-                    <FormGroup>
-                    
-                        
+                    <FormGroup>                      
                         <Stack direction="row" spacing={2}>
                             <Tooltip title="Subscribe">
                             <IconButton type="submit" variant="underlined" color="info">

@@ -45,25 +45,25 @@ export default function DrawerAfterworkOrganizer() {
      <ListItem>
        <ListItemText>          
          <ListItemButton tag={Link} to="/login" style={{color: 'white'}}>
-          <Login style={{color: 'white'}}/>Login</ListItemButton>
+          <Login style={{color: 'white'}}/> Login / Sign Up</ListItemButton>
        </ListItemText>
      </ListItem>
      <ListItem>
        <ListItemText>          
          <ListItemButton tag={Link} to="/logout" style={{color: 'white'}}>
-         <Logout style={{color: 'white'}}/>Logout</ListItemButton>
+         <Logout style={{color: 'white'}}/> Logout</ListItemButton>
        </ListItemText>
      </ListItem>
      <ListItem>
        <ListItemText>       
       <ListItemButton tag={Link} to="/activities/new" style={{color: 'white'}}>
-        <Edit style={{color: 'white'}}/>Add New Activity</ListItemButton>
+        <Edit style={{color: 'white'}}/> Add New Activity</ListItemButton>
        </ListItemText>
      </ListItem>
      <ListItem>
        <ListItemText>
          <ListItemButton tag={Link} to="/subscribe" style={{color: 'white'}}>
-          <Subscriptions style={{color: 'white'}}/>Subscribe to Activity</ListItemButton>
+          <Subscriptions style={{color: 'white'}}/> Subscribe to Activity</ListItemButton>
        </ListItemText>
      </ListItem>
      </List>
