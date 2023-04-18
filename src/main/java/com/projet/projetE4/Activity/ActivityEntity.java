@@ -23,7 +23,6 @@ public class ActivityEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	@Column(name = "name")
 	private String name;
 	@Column(name = "organizer")
@@ -41,7 +40,7 @@ public class ActivityEntity {
 	@Column(name = "type")
 	private String type;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "participe",
 			joinColumns = {
 					@JoinColumn(name = "activity_id", referencedColumnName = "id",

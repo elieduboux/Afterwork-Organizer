@@ -4,19 +4,12 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
         <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
-        <title>ActivityList</title>
+        <title>SubscribedActivities</title>
     </head>
     <body>
         <div class="container text-center">
             <th:block th:include="/_menu"></th:block>
-            <h2 >Activity List</h2>
-            <tr>
-                <span th:if="${#request.userPrincipal != null}">
-                    <div align = "left" >
-                        <h3><a  th:href="@{'/new'}">Add new</a></h3>
-                    </div>
-                </span>
-            </tr>
+            <h2 >SubscribedActivities</h2>
             <tr>
                     <div class="panel-body">
                         <table class="table">
@@ -30,9 +23,6 @@
                                 <th>Duration</th>
                                 <th>Nb Participants</th>
                                 <th>Type</th>
-                                <span th:if="${#request.userPrincipal != null}">
-                                    <th>Subscribe</th>
-                                </span>
                             </tr>
                             </thead>
                             <tbody>
@@ -45,9 +35,6 @@
                                     <td th:text="${activity.duration}">Duration</td>
                                     <td th:text="${activity.numberParticipants}">Nb Participants</td>
                                     <td th:text="${activity.type}">Type</td>
-                                    <span th:if="${#request.userPrincipal != null}">
-                                        <td><a th:href="@{'/subscribeActivity/' + ${activity.id}}">Subscribe</a></td>
-                                    </span>
                                 </tr>
                             </tbody>
                         </table>

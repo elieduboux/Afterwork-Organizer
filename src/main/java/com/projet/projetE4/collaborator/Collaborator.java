@@ -35,17 +35,17 @@ public class Collaborator implements UserDetails {
     private String email;
     private String adresse;
     private String password;
-    @Enumerated (EnumType.STRING)
-    private CollaboratorRole collaboratorRole;
+//    @Enumerated (EnumType.STRING)
+    private String collaboratorRole;
     private Boolean locked = false;
     private Boolean enabled = true;
 
-    @ManyToMany(mappedBy = "collaborators", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "collaborators", fetch = FetchType.EAGER)
     private List<ActivityEntity> activities = new ArrayList<>();
 
     public Collaborator(String firstName, String lastName,
                         String email, String adresse,
-                        String password, CollaboratorRole collaboratorRole) {
+                        String password, String collaboratorRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -77,8 +77,9 @@ public class Collaborator implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority autority = new SimpleGrantedAuthority(collaboratorRole.name());
-        return Collections.singleton(autority);
+//        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(collaboratorRole.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
+        return Collections.singleton(authority);
     }
 
     @Override

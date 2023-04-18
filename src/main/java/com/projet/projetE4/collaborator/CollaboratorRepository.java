@@ -1,5 +1,6 @@
 package com.projet.projetE4.collaborator;
 
+import com.projet.projetE4.Activity.ActivityEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,14 +11,15 @@ import java.util.Optional;
 
 @Repository
 @Transactional(readOnly = true)
-public interface CollaboratorRepository extends
+public interface    CollaboratorRepository extends
         JpaRepository<Collaborator,Long> {
 
     @Query("SELECT c FROM Collaborator c WHERE c.email = ?1")
     //@Query("SELECT c FROM Collaborator c WHERE c.email like ?1")
     Optional<Collaborator> findCollaboratorByEmail(String email);
 
-
-//    List<Collaborator> findByNameContaining(String name);
+//    @Query("select p from ActivityEntity p where p.collaborators = ?1")
+    @Query("from ActivityEntity a left join fetch a.collaborators i where i.email = ?1")
+    List<ActivityEntity> findAllBySubscribe(String email);
 
 }

@@ -19,7 +19,7 @@ public class RegistrationService {
                         request.getEmail(),
                         request.getAdresse(),
                         request.getPassword(),
-                        CollaboratorRole.USER
+                        "USER"
                 )
         );
     }

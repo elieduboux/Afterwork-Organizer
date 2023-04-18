@@ -9,4 +9,5 @@ public interface ActivityRepository extends JpaRepository<ActivityEntity, Long>{
 
     @Query("select p from ActivityEntity p where p.organizer = ?1")
     List<ActivityEntity> findAllByOrganizer(String organizer);
+
 }

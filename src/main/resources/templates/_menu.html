@@ -1,6 +1,9 @@
 <div xmlns:th="http://www.thymeleaf.org"
      style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
 
+    <a th:if="${#request.userPrincipal != null}" th:href="@{/subscribedActivities}">SubscribedActivities</a>
+
+    <span th:if="${#request.userPrincipal != null}">&nbsp; | &nbsp;</span>
 
     <a th:if="${#request.userPrincipal != null}" th:href="@{/myActivities}">MyActivities</a>
 

@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //TODO :: The csrf disable is temporary --> check for more
         http.csrf().disable();
         http.authorizeRequests().
-            antMatchers("/", "/activityList", "/new", "/edit/**",
+            antMatchers("/", "/activityList", "/new", "/edit/**", "/subscribedActivities",
                     "/signUp", "/login", "/logout", "/register_success").permitAll();
 
         // Config for Login Form

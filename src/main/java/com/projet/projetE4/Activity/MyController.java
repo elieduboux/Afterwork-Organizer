@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import com.projet.projetE4.collaborator.Collaborator;
+import com.projet.projetE4.collaborator.CollaboratorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,8 @@ public class MyController {
 
 	@Autowired
     private final ActivityRepository activityRepository;
+    @Autowired
+    private final CollaboratorRepository collaboratorRepository;
 
     @RequestMapping(value = { "/", "/activityList"}, method = RequestMethod.GET)
     public String activityList(Model model, Principal principal) {
@@ -43,6 +46,18 @@ public class MyController {
         List<ActivityEntity>listActivity = activityRepository.findAllByOrganizer(email);
         model.addAttribute("listActivity", listActivity);
         return "myActivities";
+    }
+
+    @RequestMapping(value = {"/subscribedActivities" }, method = RequestMethod.GET)
+    public String subscribedActivities(Model model, Principal principal) {
+        if (principal == null){
+            return activityList(model, null);
+        }
+        Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
+        String email = loginUser.getEmail();
+        List<ActivityEntity>listActivity = collaboratorRepository.findAllBySubscribe(email);
+        model.addAttribute("listActivity", listActivity);
+        return "subscribedActivities";
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -132,6 +147,20 @@ public class MyController {
         }
 
     	activityRepository.deleteById(id);
+        return "redirect:/";
+    }
+
+    @RequestMapping("/subscribeActivity/{id}")
+    public String subscribeActivity(@PathVariable Long id, Model model, Principal principal) {
+        if (principal == null){
+            return activityList(model, null);
+        }
+        ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
+                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+
+        Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
+        currentActivity.addCollaborator(loginUser);
+        activityRepository.save(currentActivity);
         return "redirect:/";
     }
 }
