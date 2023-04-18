@@ -1,8 +1,10 @@
 package com.projet.projetE4.collaborator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8100")
@@ -37,4 +39,9 @@ public class CollaboratorController {
             @RequestParam(required = false) String email) throws IllegalAccessException {
         collaboratorService.updateCollaborator(collaboratorId,email);
     }
+
+//    @RequestMapping("/unsubscribeActivity/{id}")
+//    public String unsubscribeActivity(@PathVariable Long id, Model model, Principal principal){
+//        return collaboratorService.unsubscribeActivity(id,model,principal);
+//    }
 }

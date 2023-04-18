@@ -15,7 +15,6 @@ import java.util.*;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 @NoArgsConstructor
 @Table(name= "Collaborator")
 public class Collaborator implements UserDetails {
@@ -41,7 +40,7 @@ public class Collaborator implements UserDetails {
     private Boolean enabled = true;
 
     @ManyToMany(mappedBy = "collaborators", fetch = FetchType.EAGER)
-    private List<ActivityEntity> activities = new ArrayList<>();
+    private Set<ActivityEntity> activities = new HashSet<>();
 
     public Collaborator(String firstName, String lastName,
                         String email, String adresse,
@@ -100,6 +99,29 @@ public class Collaborator implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Collaborator that = (Collaborator) o;
+        return Objects.equals(id, that.id) && Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email) &&
+                Objects.equals(adresse, that.adresse) && Objects.equals(password, that.password) &&
+                Objects.equals(collaboratorRole, that.collaboratorRole) && Objects.equals(locked, that.locked) &&
+                Objects.equals(enabled, that.enabled) && Objects.equals(activities, that.activities);
+    }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, firstName, lastName, email, adresse, password, collaboratorRole, locked, enabled, activities);
+//    }
+
+    public void printActivities(){
+        for (ActivityEntity c: activities) {
+            System.out.println(c.getName());
+        }
     }
 
 }

@@ -87,7 +87,7 @@ public class MyController {
         return "redirect:/";
     }
 
-    @RequestMapping(value="updateActivity/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="updateActivity/{id}", method = RequestMethod.POST)
     public String updateActivity(ActivityRequest activityRequest, @PathVariable Long id,
                                  Principal principal, Model model ) {
         if (principal == null){
@@ -114,7 +114,7 @@ public class MyController {
         return "redirect:/";
     }
 
-    @RequestMapping(value="/editActivity/{id}", method = RequestMethod.POST)
+    @RequestMapping(value="/editActivity/{id}", method = RequestMethod.GET)
     public String editActivity(@PathVariable("id") Long id, Model model, Principal principal) {
         if (principal == null){
             return activityList(model, null);
@@ -160,6 +160,33 @@ public class MyController {
 
         Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
         currentActivity.addCollaborator(loginUser);
+        activityRepository.save(currentActivity);
+        return "redirect:/";
+    }
+
+    @RequestMapping("/unsubscribeActivity/{id}")
+    public String unsubscribeActivity(@PathVariable Long id, Model model, Principal principal) {
+        if (principal == null){
+            return activityList(model, null);
+        }
+        ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
+                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+
+        Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
+
+//        loginUser.removeActivity(currentActivity);
+
+
+//        System.out.println("*** BEFORE unsubscribe ***");
+//        currentActivity.printCollaborators();
+//        loginUser.printActivities();
+        currentActivity.removeCollaborator(loginUser);
+//        loginUser.getActivities().remove(currentActivity);
+//        currentActivity.getCollaborators().remove(loginUser);
+
+//        System.out.println("*** AFTER unsubscribe ***");
+//        currentActivity.printCollaborators();
+//        loginUser.printActivities();
         activityRepository.save(currentActivity);
         return "redirect:/";
     }

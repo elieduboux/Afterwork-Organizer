@@ -1,14 +1,21 @@
 package com.projet.projetE4.collaborator;
 
 
+import com.projet.projetE4.Activity.ActivityEntity;
+import com.projet.projetE4.Activity.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -96,4 +103,28 @@ public class CollaboratorService implements UserDetailsService {
 
         return "register_success";
     }
+
+//    public String unsubscribeActivity(@PathVariable Long id, Model model, Principal principal) {
+////        if (principal == null){
+////            return activityList(model, null);
+////        }
+//        ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
+//                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+//
+//        Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
+//
+//        loginUser.removeActivity(currentActivity);
+//
+//        System.out.println("*** BEFORE unsubscribe ***");
+//        currentActivity.printCollaborators();
+//        loginUser.printActivities();
+//        loginUser.getActivities().remove(currentActivity);
+//        currentActivity.getCollaborators().remove(loginUser);
+//
+//        System.out.println("*** AFTER unsubscribe ***");
+//        currentActivity.printCollaborators();
+//        loginUser.printActivities();
+//        activityRepository.save(currentActivity);
+//        return "redirect:/";
+//    }
 }

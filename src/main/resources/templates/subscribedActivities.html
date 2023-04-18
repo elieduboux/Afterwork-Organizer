@@ -23,6 +23,7 @@
                                 <th>Duration</th>
                                 <th>Nb Participants</th>
                                 <th>Type</th>
+                                <th>Unsubscribe</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -35,6 +36,7 @@
                                     <td th:text="${activity.duration}">Duration</td>
                                     <td th:text="${activity.numberParticipants}">Nb Participants</td>
                                     <td th:text="${activity.type}">Type</td>
+                                    <td><a th:href="@{'/unsubscribeActivity/' + ${activity.id}}">Unsubscribe</a></td>
                                 </tr>
                             </tbody>
                         </table>

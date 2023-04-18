@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -63,12 +62,41 @@ public class ActivityEntity {
 	}
 
 	public void addCollaborator(Collaborator collaborator) {
+		if (collaborators.contains(collaborator)) {
+			return;
+		}
+		collaborator.printActivities();
+		printCollaborators();
 		collaborators.add(collaborator);
 		collaborator.getActivities().add(this);
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ActivityEntity activity = (ActivityEntity) o;
+		return Objects.equals(id, activity.id) && Objects.equals(name, activity.name) &&
+				Objects.equals(organizer, activity.organizer) && Objects.equals(address, activity.address) &&
+				Objects.equals(date, activity.date) && Objects.equals(time, activity.time) &&
+				Objects.equals(duration, activity.duration) &&
+				Objects.equals(numberParticipants, activity.numberParticipants) &&
+				Objects.equals(type, activity.type) && Objects.equals(collaborators, activity.collaborators);
+	}
+
+//	@Override
+//	public int hashCode() {
+//		return Objects.hash(id, name, organizer, address, date, time, duration, numberParticipants, type, collaborators);
+//	}
+
 	public void removeCollaborator(Collaborator collaborator) {
-		collaborators.remove(collaborator);
 		collaborator.getActivities().remove(this);
+		collaborators.remove(collaborator);
+	}
+
+	public void printCollaborators(){
+		for (Collaborator c: collaborators) {
+			System.out.println(c);
+		}
 	}
 }
