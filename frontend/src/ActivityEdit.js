@@ -5,6 +5,7 @@ import AppNavbar from './AppNavbar';
 import { Stack, Tooltip, IconButton } from '@mui/material';
 import Add from '@mui/icons-material/Add';
 import CancelIcon from '@mui/icons-material/Cancel';
+import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
 
 class ActivityEdit extends Component {
 
@@ -61,6 +62,7 @@ class ActivityEdit extends Component {
     
         return <div>
             <AppNavbar/>
+            <DrawerAfterworkOrganizer />
             <Container>
                 {title}
                 <Form onSubmit={this.handleSubmit}>

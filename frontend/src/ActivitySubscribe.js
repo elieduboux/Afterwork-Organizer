@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useForm } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
@@ -7,6 +7,9 @@ import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import Unsubscribe  from '@mui/icons-material/Unsubscribe';
 import { IconButton, Button, Box, Stack } from "@mui/material";
 import Preferences from './Preferences';
+import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
+import BasicDatePicker from './datePicker';
+
 class ActivitySubscribe extends Component {
 
    
@@ -69,6 +72,7 @@ class ActivitySubscribe extends Component {
 
         return <div>
             <AppNavbar/>
+            <DrawerAfterworkOrganizer />
             <Container>
                 {title}
                 <Form onSubmit={this.handleSubmit}>
@@ -78,8 +82,8 @@ class ActivitySubscribe extends Component {
                                onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="organisator">Surname</Label>
-                        <Input type="text" name="surname" placeholder="Please enter your surname" id="organisator" value={item.organisator || ''}
+                        <Label for="surname">Surname</Label>
+                        <Input type="text" name="surname" placeholder="Please enter your surname" id="surname" value={item.surname || ''}
                                onChange={this.handleChange} autoComplete="surname"/>
                     </FormGroup>
                     <FormGroup>
@@ -90,10 +94,14 @@ class ActivitySubscribe extends Component {
                         <Input type="text" name="collaborator" placeholder="Please enter collaborator username" id="collaborator" value={item.collaborator || ''}
                                onChange={this.handleChange} autoComplete="collaborator"/>
                     </FormGroup>
-                
+
                     <FormGroup>
-                    
-                        
+                        <Label for="date">Date</Label>
+                        <br></br>
+                        <BasicDatePicker />
+                    </FormGroup>
+                
+                    <FormGroup>                      
                         <Stack direction="row" spacing={2}>
                             <Tooltip title="Subscribe">
                             <IconButton type="submit" variant="underlined" color="info">

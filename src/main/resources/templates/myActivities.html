@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+        <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+        <title>MyActivities</title>
+    </head>
+    <body>
+        <div class="container text-center">
+            <th:block th:include="/_menu"></th:block>
+            <h2 >My Activities</h2>
+            <tr>
+                <div align = "left" >
+                    <h3><a  th:href="@{'/new'}">Add new</a></h3>
+                </div>
+            </tr>
+            <tr>
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Organizer</th>
+                                <th>Address</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Duration</th>
+                                <th>Nb Participants</th>
+                                <th>Type</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr  th:each="activity : ${listActivity}">
+                                    <td th:text="${activity.name}">Name</td>
+                                    <td th:text="${activity.organizer}">Organizer</td>
+                                    <td th:text="${activity.address}">Address</td>
+                                    <td th:text="${activity.date}">Date</td>
+                                    <td th:text="${activity.time}">Time</td>
+                                    <td th:text="${activity.duration}">Duration</td>
+                                    <td th:text="${activity.participants}">Nb Participants</td>
+                                    <td th:text="${activity.type}">Type</td>
+                                    <td><a th:href="@{'/editActivity/' + ${activity.id}}">Edit</a></td>
+                                    <td><a th:href="@{'/deleteActivity/' + ${activity.id}}">Delete</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            </tr>
+        </div>
+    </body>
+</html>

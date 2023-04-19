@@ -5,6 +5,7 @@ import JsonDataDisplay from './DataDisplayJson';
 import glasses from './glasses_50.png';
 import beer from './beer.png';
 import DrawerAfterworkOrganizer from './DrawerAfterworkOrganizer';
+import './Activity.css';
 
 class ActivityList extends Component {
   constructor(props) {

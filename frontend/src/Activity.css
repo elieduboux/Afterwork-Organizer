@@ -17,11 +17,22 @@
 }
 
 .img-container img {
-    width: 450px;
+    width: 400px;
     transition: transform 0.3s;
 }
   
 .img-container img:hover {
-    transform: scale(1.5);
+    transform: scale(0.7);
 }
 
+.row {
+    display: flex;
+    padding: 20px; 
+}
+  
+.column {
+    flex: 23.33%;
+    padding-top: 15px;
+    padding-left: 20px;
+    float: left;
+}
