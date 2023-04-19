@@ -65,8 +65,6 @@ public class ActivityEntity {
 		if (collaborators.contains(collaborator)) {
 			return;
 		}
-		collaborator.printActivities();
-		printCollaborators();
 		collaborators.add(collaborator);
 		collaborator.getActivities().add(this);
 	}
@@ -84,19 +82,9 @@ public class ActivityEntity {
 				Objects.equals(type, activity.type) && Objects.equals(collaborators, activity.collaborators);
 	}
 
-//	@Override
-//	public int hashCode() {
-//		return Objects.hash(id, name, organizer, address, date, time, duration, numberParticipants, type, collaborators);
-//	}
-
 	public void removeCollaborator(Collaborator collaborator) {
 		collaborator.getActivities().remove(this);
 		collaborators.remove(collaborator);
 	}
 
-	public void printCollaborators(){
-		for (Collaborator c: collaborators) {
-			System.out.println(c);
-		}
-	}
 }

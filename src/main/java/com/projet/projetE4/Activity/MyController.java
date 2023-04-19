@@ -19,6 +19,15 @@ import org.springframework.web.context.request.WebRequest;
 @AllArgsConstructor
 public class MyController {
 
+    private static final String LIST_ACTIVITY =
+            "listActivity";
+
+    private static final String ACTIVITY_DO_NOT_EXISTS =
+            "activity with id {%s} not found";
+
+    private static final String REDIRECT =
+            "redirect:/";
+
 	@Autowired
     private final ActivityRepository activityRepository;
     @Autowired
@@ -32,7 +41,7 @@ public class MyController {
             model.addAttribute("userInfo", userInfo);
         }
         List<ActivityEntity>listActivity = activityRepository.findAll();
-        model.addAttribute("listActivity", listActivity);
+        model.addAttribute(LIST_ACTIVITY, listActivity);
         return "activityList";
     }
 
@@ -44,7 +53,7 @@ public class MyController {
         Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
         String email = loginUser.getEmail();
         List<ActivityEntity>listActivity = activityRepository.findAllByOrganizer(email);
-        model.addAttribute("listActivity", listActivity);
+        model.addAttribute(LIST_ACTIVITY, listActivity);
         return "myActivities";
     }
 
@@ -56,7 +65,7 @@ public class MyController {
         Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
         String email = loginUser.getEmail();
         List<ActivityEntity>listActivity = collaboratorRepository.findAllBySubscribe(email);
-        model.addAttribute("listActivity", listActivity);
+        model.addAttribute(LIST_ACTIVITY, listActivity);
         return "subscribedActivities";
     }
 
@@ -84,7 +93,7 @@ public class MyController {
                 activityRequest.getNumberParticipants(),
                 activityRequest.getType());
         activityRepository.save(activity);
-        return "redirect:/";
+        return REDIRECT;
     }
 
     @RequestMapping(value="updateActivity/{id}", method = RequestMethod.POST)
@@ -96,7 +105,7 @@ public class MyController {
         Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
         String email = loginUser.getEmail();
         ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
-                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+                -> new ResourceNotFoundException(ACTIVITY_DO_NOT_EXISTS + id));
 
         if (!email.equals(currentActivity.getOrganizer())){
             return activityList(model, principal);
@@ -111,7 +120,7 @@ public class MyController {
         currentActivity.setNumberParticipants(activityRequest.getNumberParticipants());
         currentActivity.setType(activityRequest.getType());
         activityRepository.save(currentActivity);
-        return "redirect:/";
+        return REDIRECT;
     }
 
     @RequestMapping(value="/editActivity/{id}", method = RequestMethod.GET)
@@ -122,7 +131,7 @@ public class MyController {
         Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
         String email = loginUser.getEmail();
         ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
-                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+                -> new ResourceNotFoundException(ACTIVITY_DO_NOT_EXISTS + id));
 
         if (!email.equals(currentActivity.getOrganizer())){
             return activityList(model, principal);
@@ -140,14 +149,14 @@ public class MyController {
         Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
         String email = loginUser.getEmail();
         ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
-                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+                -> new ResourceNotFoundException(ACTIVITY_DO_NOT_EXISTS + id));
 
         if (!email.equals(currentActivity.getOrganizer())){
             return activityList(model, principal);
         }
 
     	activityRepository.deleteById(id);
-        return "redirect:/";
+        return REDIRECT;
     }
 
     @RequestMapping("/subscribeActivity/{id}")
@@ -156,12 +165,12 @@ public class MyController {
             return activityList(model, null);
         }
         ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
-                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+                -> new ResourceNotFoundException(ACTIVITY_DO_NOT_EXISTS + id));
 
         Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
         currentActivity.addCollaborator(loginUser);
         activityRepository.save(currentActivity);
-        return "redirect:/";
+        return REDIRECT;
     }
 
     @RequestMapping("/unsubscribeActivity/{id}")
@@ -170,24 +179,12 @@ public class MyController {
             return activityList(model, null);
         }
         ActivityEntity currentActivity = activityRepository.findById(id).orElseThrow(()
-                -> new ResourceNotFoundException("Activity not exist with id :" + id));
+                -> new ResourceNotFoundException(ACTIVITY_DO_NOT_EXISTS + id));
 
         Collaborator loginUser = (Collaborator) ((Authentication) principal).getPrincipal();
-
-//        loginUser.removeActivity(currentActivity);
-
-
-//        System.out.println("*** BEFORE unsubscribe ***");
-//        currentActivity.printCollaborators();
-//        loginUser.printActivities();
+    
         currentActivity.removeCollaborator(loginUser);
-//        loginUser.getActivities().remove(currentActivity);
-//        currentActivity.getCollaborators().remove(loginUser);
-
-//        System.out.println("*** AFTER unsubscribe ***");
-//        currentActivity.printCollaborators();
-//        loginUser.printActivities();
         activityRepository.save(currentActivity);
-        return "redirect:/";
+        return REDIRECT;
     }
 }

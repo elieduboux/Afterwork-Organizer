@@ -1,7 +1,6 @@
 package com.projet.projetE4.collaborator;
 
 import com.projet.projetE4.Activity.ActivityEntity;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -76,7 +75,6 @@ public class Collaborator implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(collaboratorRole.name());
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
         return Collections.singleton(authority);
     }
@@ -113,15 +111,10 @@ public class Collaborator implements UserDetails {
                 Objects.equals(enabled, that.enabled) && Objects.equals(activities, that.activities);
     }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, firstName, lastName, email, adresse, password, collaboratorRole, locked, enabled, activities);
-//    }
-
-    public void printActivities(){
-        for (ActivityEntity c: activities) {
-            System.out.println(c.getName());
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, adresse, password, collaboratorRole, locked, enabled, activities);
     }
+
 
 }

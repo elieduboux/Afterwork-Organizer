@@ -15,10 +15,8 @@ public interface    CollaboratorRepository extends
         JpaRepository<Collaborator,Long> {
 
     @Query("SELECT c FROM Collaborator c WHERE c.email = ?1")
-    //@Query("SELECT c FROM Collaborator c WHERE c.email like ?1")
     Optional<Collaborator> findCollaboratorByEmail(String email);
 
-//    @Query("select p from ActivityEntity p where p.collaborators = ?1")
     @Query("from ActivityEntity a left join fetch a.collaborators i where i.email = ?1")
     List<ActivityEntity> findAllBySubscribe(String email);
 
