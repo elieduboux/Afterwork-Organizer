@@ -1,0 +1,34 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
+
+    <a th:if="${#request.userPrincipal != null}" th:href="@{/subscribedActivities}">SubscribedActivities</a>
+
+    <span th:if="${#request.userPrincipal != null}">&nbsp; | &nbsp;</span>
+
+    <a th:if="${#request.userPrincipal != null}" th:href="@{/myActivities}">MyActivities</a>
+
+    <span th:if="${#request.userPrincipal != null}">&nbsp; | &nbsp;</span>
+
+    <a th:href="@{/}">ActivityList</a>
+
+    &nbsp; | &nbsp;
+
+    <a th:href="@{/login}">Login</a>
+
+    &nbsp; | &nbsp;
+
+    <a th:href="@{/signUp}">Sign up</a>
+
+<!--    | &nbsp;-->
+
+<!--    <a th:href="@{/admin}">Admin</a>-->
+
+    <span th:if="${#request.userPrincipal != null}">&nbsp; | &nbsp;</span>
+
+    <a th:if="${#request.userPrincipal != null}" th:href="@{/userInfo}">User Info</a>
+
+    <span th:if="${#request.userPrincipal != null}">&nbsp; | &nbsp;</span>
+
+    <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
+
+</div>

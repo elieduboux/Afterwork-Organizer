@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>New Activity</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<div class="container text-center">
+    <th:block th:include="/_menu"></th:block>
+    <div>
+        <h1>Edit Activity</h1>
+    </div>
+    <form th:action="@{/updateActivity/{id}(id=${activity.id})}" th:object="${activity}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Name: *</label>
+                <div class="col-8">
+                    <label>
+                        <input type="text" th:field="*{name}" class="form-control" required />
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Mail Organizer: *</label>
+                <div class="col-8">
+                    <label>
+                        <input type="email" th:field="*{organizer}" class="form-control" required/>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Address: *</label>
+                <div class="col-8">
+                    <label>
+                        <input type="text" th:field="*{address}" class="form-control" required />
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Date: *</label>
+                <div class="col-8">
+                    <label>
+                        <input type="text" th:field="*{date}" class="form-control" required />
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Time: </label>
+                <div class="col-8">
+                    <label>
+                        <input type="text" th:field="*{time}" class="form-control" />
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Duration: </label>
+                <div class="col-8">
+                    <label>
+                        <input type="text" th:field="*{duration}" class="form-control" />
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Number of Participants: </label>
+                <div class="col-8">
+                    <label>
+                        <input type="text" th:field="*{numberParticipants}" class="form-control" />
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Type: </label>
+                <div class="col-8">
+                    <label>
+                        <input type="text" th:field="*{type}" class="form-control"/>
+                    </label>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
